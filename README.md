@@ -28,7 +28,7 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 
 
 
-[Vídeo de Apresentação](https://<link)
+[Vídeo de Apresentação](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/datasci4health_proposta_projeto.mp4)
 
 # Pergunta de Pesquisa
  É possível utilizar Aprendizado de Máquina para identificar padrões moleculares em compostos inibidores da enzima EGFR/ErbB1 relacionada ao câncer?
