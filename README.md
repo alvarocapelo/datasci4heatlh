@@ -25,9 +25,6 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 
  Portanto, é de extrema relevância a busca por novas moléculas inibidoras, de forma a viabilizar um tratamento efetivo, seguro e compatível com a vida de todos aqueles que padecem desta grande enfermidade chamada câncer. Tendo esse cenário em vista, buscamos explorar, por meio de ferramentas de ciência de dados, potenciais moléculas inibidoras de ErbB1/HER1, suportando o conhecimento que será construído por toda a rede científica global na solução desta problemática.
 
-
-
-
 [Vídeo de Apresentação](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/datasci4health_proposta_projeto.mp4)
 
 # Pergunta de Pesquisa
@@ -40,10 +37,16 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 
 
 # Metodologia
- Exploraremos uma combinação de técnicas de aprendizagem de máquina, análise estatística e visualização. Serão adicionadas às Fingerprints circulares (estruturais) também Fingerprints farmacofóricas, com o objetivo de compreender os mecanismos de inibição também a partir de uma perspectiva funcional. A interpretação dessas variáveis em termos de características e/ou padrões moleculares será realizada com o auxílio da biblioteca RDKit. Usaremos algoritmos baseados em árvore de decisão pelo poder em capturar interações entre variáveis [5]. Esses algoritmos, porém, tendem a ser instáveis, e por isso modelos de ensemble serão avaliados. Faremos a seleção e visualização de um subconjunto de variáveis por meio dos valores de importância (“feature importance”) calculados usando a biblioteca SHAP (SHapley Additive exPlanations). Por fim, algoritmos de agrupamento (clustering) usando a biblioteca Scikit-Learn serão utilizados para visualizar grupos nos compostos inibidores e não inibidores. 
+Seguiremos a metodologia _Knowledge Discovery in Databases_[11] proposta por Fayyad et al. em 2016. 
+Partindo da base de dados _Cancer Inhibitors_[1] do Kaggle, selecionaremos os dados correspondentes à enzima EGFR/ErbB1 como conjunto de estudo.
+Serão adicionadas às Fingerprints circulares (estruturais) também Fingerprints farmacofóricas, com o objetivo de compreender os mecanismos de inibição também a partir de uma perspectiva funcional. 
+
+Para _data mining_, exploraremos uma combinação de técnicas de aprendizagem de máquina, análise estatística e visualização.
+A interpretação das variáveis de entrada em termos de características e/ou padrões moleculares será realizada com o auxílio da biblioteca RDKit[4].
+Usaremos algoritmos baseados em árvore de decisão pelo poder em capturar interações entre variáveis [5]. Esses algoritmos, porém, tendem a ser instáveis, e por isso modelos de ensemble serão avaliados. Faremos a seleção e visualização de um subconjunto de variáveis por meio dos valores de importância (“feature importance”) calculados usando a biblioteca SHAP[5] (SHapley Additive exPlanations). Por fim, algoritmos de agrupamento (clustering) usando a biblioteca Scikit-Learn[3] serão utilizados para visualizar grupos nos compostos inibidores e não inibidores. 
 
 # Ferramentas
- Para a execução desse projeto, utilizaremos a linguagem Python devido à disponibilidade de bibliotecas em seu ecossistema. Em particular, vamos utilizar as bibliotecas Scikit-Learn[3], que disponibiliza diversos algoritmos para aprendizagem de máquina, RDKit[4] para a manipulação das informações das moléculas e SHAP[5] (SHapley Additive exPlantions), para interpretação dos modelos de aprendizado de máquina, entre outras que julgarmos necessárias durante o desenvolvimento do trabalho.
+ Para a execução desse projeto, utilizaremos a linguagem Python devido à disponibilidade de bibliotecas em seu ecossistema. Em particular, vamos utilizar as bibliotecas Scikit-Learn[3], que disponibiliza diversos algoritmos para aprendizagem de máquina, RDKit[4] para a manipulação das informações das moléculas e SHAP[5](_SHapley Additive exPlantions_), para interpretação dos modelos de aprendizado de máquina, entre outras que julgarmos necessárias durante o desenvolvimento do trabalho.
 
 # Cronograma
  |Atividades  | Abril | Maio | Junho |
@@ -73,3 +76,5 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
  [9] ROSKOSKI, R. The ErbB/HER receptor protein-tyrosine kinases and cancer. Biochemical and Biophysical Research Communications, v. 319, n. 1, p. 1–11, 2004.
 
  [10] KRAUSE, D. S.; VAN ETTEN, R. A. Tyrosine Kinases as Targets for Cancer Therapy. New England Journal of Medicine, v. 353, n. 2, p. 172–187, 2005.
+
+[11] FAYYAD, U. M., PIATETSKY-SHAPIRO, G., and SMYTH, P., 1996, Knowledge Discovery and Data Mining: Towards a Unifying Framework.,  KDD-96, 1996.
