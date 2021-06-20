@@ -28,7 +28,7 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 [Vídeo de Apresentação](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/datasci4health_proposta_projeto.mp4)
 
 # Pergunta de Pesquisa
- É possível utilizar Aprendizado de Máquina para identificar padrões moleculares em compostos inibidores da enzima EGFR/ErbB1 relacionada ao câncer?
+Quais são os principais padrões moleculares associadas ao comportamento inibitório frente à enzima EGFR/ErbB1, relacionada ao câncer?
 
 # Bases de Dados
  Nós utilizaremos a base de dados Cancer Inhibitors[1] disponibilizada na plataforma Kaggle. Essa base contém informações sobre a estrutura de moléculas coletadas  a partir da ChEMBL[2]. Para cada uma dessas moléculas, há uma anotação se ela inibe ou não uma proteína quinase. Há oito proteínas disponíveis, mas apenas a EGFR/ErbB1 será utilizada nesse trabalho.
