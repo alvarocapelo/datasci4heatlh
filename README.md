@@ -37,12 +37,33 @@ Quais são os principais padrões moleculares associadas ao comportamento inibit
 
 
 # Metodologia
-Seguiremos a metodologia _Knowledge Discovery in Databases_[11] proposta por Fayyad et al. em 2016. 
-Partindo da base de dados _Cancer Inhibitors_[1] do Kaggle, selecionaremos os dados correspondentes à enzima EGFR/ErbB1 como conjunto de estudo.
-Serão adicionadas às Fingerprints circulares (estruturais) também Fingerprints farmacofóricas, com o objetivo de compreender os mecanismos de inibição também a partir de uma perspectiva funcional. 
+Foi utilizada a metodologia _Knowledge Discovery in Databases_[11] proposta por Fayyad et al. em 2016. Partindo da base de dados _Cancer Inhibitors_[1] do Kaggle, foram selecionados os dados correspondentes à enzima EGFR/ErbB1 como conjunto de estudo. 
+
+## Preparo do Dataset:
+O preparo do Dataset inicia com a lista de proteínas fornecida na base de dados onde as proteínas são identificadas pelos seus respectivos ChEMBL IDs (identificadores na base de dados ChEMBL) e suas respectivas labels (1 para inibidoras e 0 para não inibidoras). Para seguir com a análise computacional proposta, foi necessário que estes dados fossem transformados em dados interpretáveis por algoritmos de aprendizado de máquina, para isso, foi empregado um método de Fingerprinting disponível na biblioteca RDKit[4].
+
+## Geração de Fingerprints:
+
+O método de Fingerprinting utilizado gera Fingerprints conhecidas como Morgan Fingerprints ou Circular Fingerprints, vetores de extensão definida em que cada elemento represeta uma sub-estrutura molecular que compõe a molécula inputada. As sub-estruturas moleculares, por sua vez, são obtidas considerando um raio, quantidade de átomos vizinhos, determinado. Os inputs utilizados para a geração das Fingerprints dets projeto foram foram:
+
+* A representação das moléculas em notação SMILES (Simplified Molecular-Input Line-Entry System), obtida com auxílio da biblioteca chembl_webresource_client [15] que acessa a base do ChEMBL e busca uma molécula a partir de seu ChEMBL ID
+* Tamanho do vetor = 2048
+* Número de átomos vizinhos = 2
+
+A geração de uma Fingerprint tem como primeiro passo a identificação de cada um dos átomos não-hidrogênio da molécula com um número inteiro, esta identificação tem como base informações locais, contemplando diferentes propriedades atômicas, como, por exemplo, seu número atômico e número de ligações. Posteriormente, os identificadores são atualizados iterativamente de forma que os identificadores iniciais sejam combinados com os átomos vizinhos até o diâmetro determinado inicialmente. A combinação resultante então passa por um método de hashing e os identificadores são listados, este processo de atualização interativa é baseada no Algoritmo de Morgan [12]. Por fim, ocorre a remoção de identificadores repetidos [13]. Neste projeto, a contagem de cada identificador não foi mantida, de forma que a saída seja um vetor de bits esparso. 
+
+Durante a geração da Fingerprint, a biblioteca RDKit permite o armazenamento de um dicionário (bitInfo) onde as chaves são os índices do vetor (Fingerprint) codificados pela molécula e os valores são tuplas com a posição dos átomos e raios que codificaram determinada estrutura [14].
+
+{índice: (posição do átomo, raio do átomo)}
+ 
+Esta informação foi armazenada para viabilizar a obtenção de informações interpretáveis sobre a moléculas além de permitir a visualização das sub-estruturas de forma isolada.
+
+Por fim, as bases de dados resultantes para a construção dos modelos continham os ChEMBL IDs, Fingerprints, dicionários bitInfo e labels de cada proteína do Dataset original.
+
+## Data Mining:
 
 Para _data mining_, exploraremos uma combinação de técnicas de aprendizagem de máquina, análise estatística e visualização.
-A interpretação das variáveis de entrada em termos de características e/ou padrões moleculares será realizada com o auxílio da biblioteca RDKit[4].
+
 Usaremos algoritmos baseados em árvore de decisão pelo poder em capturar interações entre variáveis [5]. Esses algoritmos, porém, tendem a ser instáveis, e por isso modelos de ensemble serão avaliados. Faremos a seleção e visualização de um subconjunto de variáveis por meio dos valores de importância (“feature importance”) calculados usando a biblioteca SHAP[5] (SHapley Additive exPlanations). Por fim, algoritmos de agrupamento (clustering) usando a biblioteca Scikit-Learn[3] serão utilizados para visualizar grupos nos compostos inibidores e não inibidores. 
 
 # Ferramentas
@@ -78,3 +99,11 @@ Usaremos algoritmos baseados em árvore de decisão pelo poder em capturar inter
  [10] KRAUSE, D. S.; VAN ETTEN, R. A. Tyrosine Kinases as Targets for Cancer Therapy. New England Journal of Medicine, v. 353, n. 2, p. 172–187, 2005.
 
 [11] FAYYAD, U. M., PIATETSKY-SHAPIRO, G., and SMYTH, P., 1996, Knowledge Discovery and Data Mining: Towards a Unifying Framework.,  KDD-96, 1996.
+
+[12] Morgan, H. L. The Generation of a Unique Machine Description for Chemical Structures - A Technique Developed at Chemical Abstracts Service. J. Chem. Doc. 1965, 5: 107-112.
+
+[13] CHEMAXON. Extended Connectivity Fingerprint ECFP. Disponível em: https://docs.chemaxon.com/display/docs/extended-connectivity-fingerprint-ecfp.md#src-1806333-extendedconnectivityfingerprintecfp-introduction. Acesso em: 21 jun. 2021.
+
+[14] RDKIT. Getting Started with the RDKit in Python. Disponível em: https://www.rdkit.org/docs/GettingStartedInPython.html#rogers. Acesso em: 21 jun. 2021.
+
+[15] CHEMBL. Chembl_webresource_client. Disponível em: https://github.com/chembl/chembl_webresource_client. Acesso em: 21 jun. 2021.
