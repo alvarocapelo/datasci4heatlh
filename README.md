@@ -66,6 +66,19 @@ Para _data mining_, exploraremos uma combinação de técnicas de aprendizagem d
 
 Usaremos algoritmos baseados em árvore de decisão pelo poder em capturar interações entre variáveis [5]. Esses algoritmos, porém, tendem a ser instáveis, e por isso modelos de ensemble serão avaliados. Faremos a seleção e visualização de um subconjunto de variáveis por meio dos valores de importância (“feature importance”) calculados usando a biblioteca SHAP[5] (SHapley Additive exPlanations). Por fim, algoritmos de agrupamento (clustering) usando a biblioteca Scikit-Learn[3] serão utilizados para visualizar grupos nos compostos inibidores e não inibidores. 
 
+### Importância de Variáveis e SHAP
+O objetivo da biblioteca SHAP é explicar a predição de uma observação a partir do cálculo da contribuição de cada variável independente. Os valores das variáveis independentes de uma observação atuam como participantes em uma coalisão, e os valores de Shapley nos dizem como distribuir de maneira justa um "pagamento" (no caso, o resultado da predição) entre essas variáveis, e baseia-se na teoria de jogos.
+
+A definição de um "pagamento" ou atribuição de importância justa pode ser definida por 4 características:
+- Eficiência: a soma da contribuição das variáveis de uma observação deve igualar-se à diferença entre a predição para essa observação e a predição média.
+- Simetria: as contribuições de duas variáveis independentes `j` e `k` devem ter o mesmo valor se elas contribuírem igualmente para todas as coalizões possíveis
+- Nulidade (_"Dummy"_): uma variável que não modifica a predição, independente da coalização de que participe, deve tar valor Shapley igual a 0.
+- Aditividade: Suponha um modelo de Árvores Aleatórias. A predição é uma média da predição feita por diversas árvores de decisão. A Aditividade garante que, dada uma variável dependente, é possível calcular o valor de Shapley em cada árvore individual, calcular o valor médio, e obter um valor Shapley correspondente àquela variável para o modelo completo de Árvores Aleatórias.
+
+Uma das principais vantagens do valor Shapley é ser o único método que satisfaz todas as propriedades acima, axiomas que dão às explicações por ele explicadas fundamentação teórica. Além disso, está apoiado em uma sólida base matemática na teoria de jogos.
+
+Construindo em cima desse conceito, a biblioteca SHAP possui pequenas modificações que permitem a interpretações globais serem consistentes com interpretações locais (para cada observação), tendo em vista que valores Shapley individuais são as "unidades formadoras" da interpração global. Por contar com essa consistência e com forte fundamentação teórica, a bilioteca SHAP é uma alternativa muitas vezes preferida a métodos tradicionais de cálculo de importância de variáveis usadas em modelos baseados em árvores, como a simples contagem de quantas vezes uma variável foi utilizada ou a alteração média na impureza promovida por uma variável. É, por isso, escolhida nesse trabalho.
+
 # Ferramentas
  Para a execução desse projeto, utilizaremos a linguagem Python devido à disponibilidade de bibliotecas em seu ecossistema. Em particular, vamos utilizar as bibliotecas Scikit-Learn[3], que disponibiliza diversos algoritmos para aprendizagem de máquina, RDKit[4] para a manipulação das informações das moléculas e SHAP[5](_SHapley Additive exPlantions_), para interpretação dos modelos de aprendizado de máquina, entre outras que julgarmos necessárias durante o desenvolvimento do trabalho.
 
