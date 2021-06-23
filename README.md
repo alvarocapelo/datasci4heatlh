@@ -26,7 +26,7 @@ Adicionalmente, foram observados subgrupos dentre as moléculas inibidoras carac
 
 # Vídeos do Projeto
 
-[Vídeo da Proposta](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/datasci4health_proposta_projeto.mp4)
+[Vídeo da Proposta](https://github.com/alvarocapelo/datasci4heatlh/blob/main/asset/datasci4health_proposta_projeto.mp4)
 
 [Vídeo da Apresentação Final]() <font color='red'>(LINK)</font>
 
@@ -69,7 +69,7 @@ Foi utilizada a metodologia _Knowledge Discovery in Databases_[11] proposta por 
 # Bases de Dados e Evolução
  Nós utilizamos a base de dados [Cancer Inhibitors](https://www.kaggle.com/xiaotawkaggle/inhibitors) [1] disponibilizada na plataforma Kaggle. Essa base contém informações sobre a estrutura de moléculas coletadas  a partir da ChEMBL[2]. Para cada uma dessas moléculas, há uma anotação se ela inibe ou não uma proteína quinase. Há oito proteínas disponíveis, mas apenas a EGFR/ErbB1 será utilizada nesse trabalho.
 
- Ao analisar a base de dados, é evidente que sua proposta é a identificação de padrões estruturais nas proteínas que justifiquem a inibição ou não inibição das enzimas a partir de um método de codificação chamado Fingerprinting. Este método apresenta diferentes abordagens, entre elas, as abordagens estruturais e as abordagens farmacofóricas (focadas nas funcionalidades da molécula), que se relacionam diretamente à forma que as moléculas são interpretadas pelos algoritmos de Data Mining.
+ Ao analisar a base de dados, é evidente que sua proposta é a identificação de padrões estruturais nas moléculas que justifiquem a inibição ou não inibição das enzimas a partir de um método de codificação chamado Fingerprinting. Este método apresenta diferentes abordagens, entre elas, as abordagens estruturais e as abordagens farmacofóricas (focadas nas funcionalidades da molécula), que se relacionam diretamente à forma que as moléculas são interpretadas pelos algoritmos de Data Mining.
 
 ## Bases Estudadas mas Não Adotadas
 
@@ -91,13 +91,7 @@ Base de Dados | Endereço na Web | Resumo descritivo
 ----- | ----- | -----
 Epidermal growth factor receptor erbB1: egfr_erbB1 | https://www.kaggle.com/xiaotawkaggle/inhibitors?select=egfr_erbB1.h5 |  Base com moléculas inibidoras ou não-inibidoras da proteína kinase egfr_erbB1. Essa base contém 5010 inibidoras e 1925 não-inibidoras da proteína kinase egfr_erbB1.
 
-> Faça uma descrição sobre o que concluiu sobre esta base. Sugere-se que respondam perguntas ou forneçam informações indicadas a seguir:
-> * Qual o esquema/dicionário desse banco (o formato é livre)?
-> * O que descobriu sobre esse banco?
-> * Quais as transformações e tratamentos (e.g., dados faltantes e limpeza) feitos?
-> * Apresente aqui uma Análise Exploratória (inicial) sobre esta base.
-
-Essa base contém dados de moléculas de proteínas associadas à proteína kinase egfr_erbB1. Essas proteínas são identificadas pelos seus respectivos ChEMBL IDs (identificadores na base de dados ChEMBL) e suas respectivas labels (1 para inibidoras e 0 para não inibidoras). Para seguir com a análise computacional proposta, foi necessário que estes dados fossem transformados em dados interpretáveis por algoritmos de aprendizado de máquina, para isso, foi empregado um método de Fingerprinting disponível na biblioteca RDKit[4].
+Essa base contém dados de moléculas associadas à proteína kinase egfr_erbB1. Essas moléculas são identificadas pelos seus respectivos ChEMBL IDs (identificadores na base de dados ChEMBL) e suas respectivas labels (1 para inibidoras e 0 para não inibidoras). Para seguir com a análise computacional proposta, foi necessário que estes dados fossem transformados em dados interpretáveis por algoritmos de aprendizado de máquina, para isso, foi empregado um método de Fingerprinting disponível na biblioteca RDKit[4].
 
 ### Geração de Fingerprints:
 
@@ -120,17 +114,6 @@ Por fim, as bases de dados resultantes para a construção dos modelos continham
 
 ## Análise Exploratória
 
-> Descreva etapas de integração de fontes de dados e apresente a seguir uma análise exploratória que envolva ambas.
->
->
->
-> Resultados de Análise Exploratória
-> * use estatística descritiva e gráficos;
-> * inclua gráficos de sobre a distribuição dos dados (e.g., histogramas e boxplots);
-> * analise correlação e use gráficos de dispersão;
-> * descreva os resultados/gráficos, os analise e contextualize com o tema definido.
-
-
 A fim de se ter uma primeira ideia dos nossos dados, nós começamos por plotar o histograma com o número de vezes que 
 cada bit é ativado, como ilustrado na Figura 1. A partir desse gráfico, observamos que determinados bits eram ativados
 com maior que frequência que outros. Então, levantamos a pergunta se esses bits mais frequêntes eram de fato importantes
@@ -144,28 +127,24 @@ conta as vezes que cada bit foi ativado e divide pelo total de moléculas. Reali
 e não-inibidores e plotamos conjuntamente no mesmo histograma representado na Figura 2. Ao analisar o gráfico da Figura 2,
 podemos notar que claramente há bits que são ativamdos com maior frequência dentre os inibidores que detre os não-inibidores, e 
 vice versa. Portanto, isso nos dá um bom indicativo de que podemos utilizar algoritmos de aprendizado de máquina para aprender
-esses padrões e classificar as proteínas como inibidoras e não-inibidoras. 
+esses padrões e classificar as moléculas como inibidoras e não-inibidoras. 
 
 
-![Histograma da distribuição da frequência de ativação dos bits.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/images/hist_activation.png) 
+![Histograma da distribuição da frequência de ativação dos bits.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/asset/images/hist_activation.png) 
 
-Figura 1: Histograma com o número de vezes que cada bir é ativado.
+Figura 1: Histograma com o número de vezes que cada bit é ativado.
 
-![Histograma com a ativação média de cada bit.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/images/hist_mean_activation.png) 
+![Histograma com a ativação média de cada bit.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/asset/images/hist_mean_activation.png) 
 
 Figura 2: Histograma com a ativação média de cada bit.
 
-Para que pudéssemos ter uma interpretação que considerasse também o conhecimento de domínio, nós plotamos quais eram as subestruturas
-que apareciam apenas entre os inibidores, e aquelas que apareciam exclusivamente entre as proteínas não-inibidoras, como ilustrado na
-Figura 3. Dessa forma, pudemos certificar que essas estrturas se assemelhavam com o que já era conhecido na Literatura de inibidores da
-proteína kinase egfr_erbB1.  
-
-![Subestruturas moleculares presentes apenas em inibidores ou em não-inibidores.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/images/initial_substructures.png) 
-
-Figura 3: Subestruturas moleculares presentes apenas em poteínas inibidoras ou apenas em não-inibidoras.
+A fim de entendermos melhor o funcionamento das Fingerprints e aprofundarmos nossa análise, nós selecionamos diferentes
+ moléculas geramos suas Fingerprints e plotamos as subestruturas codificadas por diferentes bits. Nós observamos que os
+ de fato bits na mesma posição (índice) em moléculas diferentes codificavam a mesma estrutura. No notebook [Investigating_RDKit_Morgan_FPs](https://github.com/alvarocapelo/datasci4heatlh/blob/main/notebooks/Investigating_RDKit_Morgan_FPs.ipynb)
+ há uma descrição mais aprofundada desse estudo.   
 
 
-Além disso, a fim de termos uma ideia da distribuição das moléculas sobre o espaço de atributos, nós utilizamos o algoritmo
+Além disso, para termos uma ideia da distribuição das moléculas sobre o espaço de atributos, nós utilizamos o algoritmo
 UMAP [17] para reduzir o número de dimensões de 2048 para 2. A Figura 4 mostra essa representação em 2D. Podemos observar que 
 há determinados agrupamentos que parecem ser formados majoritariamente por moléculas inibidoras, outros por não-inibidoras, e 
 ainda outras regiões onde inibidoras e não-inibidoras estão mais misturadas. Com isso, nós levantamos a seguinte hipótese,
@@ -173,9 +152,10 @@ ainda outras regiões onde inibidoras e não-inibidoras estão mais misturadas. 
 Para responder essa pergunta, nós realizamos a análise de clusters dessas moléculas, como descrito na Seção "Análise de Clusters".   
 
 
-![Visualização da distribuição das moléculas sobre o espaço de atributos.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/cluster_initial.png)
+![Visualização da distribuição das moléculas sobre o espaço de atributos.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/asset/images/cluster_initial.png)
 
-Figura 4: Visualização da distribuição das moléculas sobre o espaço de atributos.
+Figura 4: Visualização da distribuição das moléculas sobre o espaço de atributos. Em laranja estão representadas as moléculas
+inibidoras e em azul as não-inibidoras.
 
 # Análises Realizadas
 
@@ -195,8 +175,87 @@ Uma das principais vantagens do valor Shapley é ser o único método que satisf
 
 Construida em cima desse conceito, a biblioteca SHAP possui pequenas modificações que permitem a interpretações globais serem consistentes com interpretações locais (para cada observação), tendo em vista que valores Shapley individuais são as "unidades formadoras" da interpração global. Por contar com essa consistência e com forte fundamentação teórica, a bilioteca SHAP é uma alternativa muitas vezes preferida a métodos tradicionais de cálculo de importância de variáveis usadas em modelos baseados em árvores, como a simples contagem de quantas vezes uma variável foi utilizada ou a alteração média na impureza promovida por uma variável. É, por isso, escolhida nesse trabalho.
 
+## Modelagem
+
+Seguindo nossa metodologia, nessa etapa nós objetivamos treinar algoritmos de classificação de modo a posteriormente extrairmos,
+por meio da biblioteca SHAP, os bits (atributos) de maior relevância estudá-los em detalhe. Ou seja, esse passo da nossa metodologia
+funcionaria como uma etapa de "_Feature Selection_". Então, nós experimentamos algoritmos que não apenas resultassem em boa 
+acurácia na classifocação, mas também que possibilitassem a explicabilidade do método de decisão. Dessa forma, nós decidimos
+trabalhar com algoritmos baseados em árvores de decisão, em particular os algoritmos 
+[Random Forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html), 
+[Extra Trees](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html?highlight=extra%20trees#sklearn.ensemble.ExtraTreesClassifier), 
+[Ada Boost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html?highlight=ada%20boost#sklearn.ensemble.AdaBoostClassifier) e
+ [Gradient Boosting](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html?highlight=gradient%20boosting#sklearn.ensemble.GradientBoostingClassifier), todos disponíveis na biblioteca do Scikit-Learn.
+ Avaliamos a performance desses algoritmos, separamos nosso conjunto de dados como sendo 80% para treino e validação e 20% para 
+ teste. Ademais, como nossa base tem um volume de dados restrito, utilizamos a abordagem de validação cruzada (5-fold), os resultados são apresentados
+ na Tabela 1. Mais detalhes sobre a modelagem podem ser obtidos no notebook [Modelling](https://github.com/alvarocapelo/datasci4heatlh/blob/main/notebooks/Modelling.ipynb).
+
+## Análise de Clusters
+
+Nesta etapa do projeto, buscamos descobrir se existe alguma combinação de subestruturas moleculares que aparece com
+frequência dentre as moléculas inibidoras e não aparece naquelas não-inibidoras. Desse modo, a clusterização se
+apresenta como uma boa abordagem, pois ela nos permite encontrar moléculas que compartilham determinados padrões.
+
+Então, nós tomamos os 10 bits que codificam as subestruturas de maior importância para a classificação, e realizamos a 
+clusterização sobre esse embedding utilizando o algoritmo HDBSCAN [16]. Assim, nós garantimos que os padrões encontrados 
+durante a clusterização se baseiam nos bits de maior importância para a classificação, além de reduzir a dimensão do 
+espaço de features, o que traz ganhos em termos de tempo de processamento. Para podemos visualizarmos os clusters, nós 
+também realizamos a redução de 10 para 2 dimensões utilizando o algoritmo UMAP [17]. 
+
+![Visualização dos clusters obtidos.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/asset/images/clusters.png)
+
+Figura 5:  As imagens ilustram a distribuição das moléculas com base em uma representação de dimensão reduzida para 2 com o algoritmo UMAP.
+À esquerda está a distribuição das moléculas sobre o espaço de atributos, ponto em laranja indicam inibidores e 
+pontos em azul indicam não-inibidores. À direta está a mesma representação, porém os pontos estão coloridos de acordo com
+o resultado da clusterização, onde o cluster de índice -1 indica outliers.
+
+![Visualização dos clusters obtidos.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/asset/images/table_bits.png)
+
+Tabela 1: Essa tabela mostra a taxa de incidência dos bits mais importantes dentro de cada cluster.
+
+A Figura 5 mostra à esquerda a distribuição das moléculas de acordo com a anotação original se elas são inibidoras ou não. 
+Além disso, à direita temos o resultado da clusterização, foram encontrados doze clusters mais um grupo de outliers. 
+Destacamos os clusters 2, 3 e 5, pois eles representam grupos de moléculas nos quais há pelo menos 30 vezes mais inibidoras 
+do que não-inibidoras. Portanto, esses são bons grupos a serem estudados em maior nível de detalhamento. Analogamente, 
+observamos que os clusters 7 e 11 representam com maioria de não-inibidores, porém essa maioria não chega a duas vezes o 
+número de não inibidores.
+
+Assim, realizamos uma análise comparativa entre os clusters 2, 3, 5, 7 e 11, onde analisamos a taxa de incidência de cada 
+bit em cada clusters. A taxa de incidência é definida como sendo a média de vezes que um dado bit é ativado dentre os 
+inibidores dividida pela média de ativação dentre os não-inibidores. Os resultados são apresentados na Tabela 2. 
+
+Podemos observar que o bit 1367 não é ativado nos clusters com mais não-inibidores, enquanto que ele tem uma incidência 
+maior ou igual a 1 para os clusters com maioria de inibidores, indicando que esse bit têm importância significativa para 
+caracterização de inibidores. Além disso, podemos ver que apenas os bits 1452 e 650 são ativados dentre os clusters 
+majoritariamente não-inibidores (clusters 7 e 11), e a incidência é igual a 1, ao passo que eles ou não são ativados dentre 
+os inibidores ou também têm incidência 1. Portanto, esses bits não são suficientes para classificar os não-inibidores. 
+Analogamente, os bits 1928 e 650 não são suficientes para explicar os inibidores dos clusters 2, 3 e 5. Já os bits 329 e 
+1482 são relevantes para a classificação de inibidores dentro do cluster 2, mas não dentro dos clusters 3 e 5. O bit 1482 
+parece ser importante para classificar os não-inibidores do cluster 3 e os inibidores do cluster 2. Por fim, o bit 1077 é 
+relevante para a classificação de inibidores dentro do cluster 5.
+
+
+## Descoberta e Validação do Conhecimento
+A partir da análise dos clusters, descobrimos que as moléculas inibidoras frequentemente apresentam o seguinte padrão: 
+ativam conjuntamente os bits 329, 1482 e 1367; ou ativam os bits 489 e 1367, mas não o 1482; ou ativam apenas o bit 1077. 
+Essa regra, apesar simples, pode ser bastante útil para um filtragem manual de moléculas candidatas a inibidoras.
+
+Para validar essa regra de classificação que descobrimos a partir da clusterização, criamos um método em python e o 
+executamos sobre o conjunto de teste. Esse método apresentou uma acurácia de 61,9%, sensibilidade e especificidade de 52,5% e 82,7%, 
+respectivamente. Portanto, acreditamos que esse método pode ser bastante aplicável na prática, porém para se ter resultados mais 
+precisos de classificação de fato serão necessários algoritmos de aprendizado de máquina, tais como os que apresentamos nesse trabalho (vide Seção Modelagem).
 
 # Resultados
+
+
+Método | Acurácia
+----- | -----
+Ada Boost | 80.8
+Extra Trees | 81.1
+Random Forest | 82.3 
+Gradient Boosting | 85.4
+
+Tabela 1: Resultados obtidos a partir da validação cruzada (5-fold) dos modelos treinados.
 
 # Discussão
 
