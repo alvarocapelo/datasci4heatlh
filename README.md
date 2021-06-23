@@ -25,19 +25,81 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 
  Portanto, é de extrema relevância a busca por novas moléculas inibidoras, de forma a viabilizar um tratamento efetivo, seguro e compatível com a vida de todos aqueles que padecem desta grande enfermidade chamada câncer. Tendo esse cenário em vista, buscamos explorar, por meio de ferramentas de ciência de dados, potenciais moléculas inibidoras de ErbB1/HER1, suportando o conhecimento que será construído por toda a rede científica global na solução desta problemática.
 
-[Vídeo de Apresentação](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/datasci4health_proposta_projeto.mp4)
+
+# Vídeos do Projeto
+
+[Vídeo da Proposta](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/datasci4health_proposta_projeto.mp4)
+
+[Vídeo da Apresentação Final]() <font color='red'>(LINK)</font>
+
+# Slides do Projeto
+
+[Slides da Proposta]()<font color='red'>(LINK)</font>
+
+[Slides da Apresentação Final]()<font color='red'>(LINK)</font>
+
+
+
+# Introdução e Referenciais de Teóricos
+> Contextualização do projeto
+>
+> Caracterização do problema
+>
+> Motivação
+>
+> Relevância
+>
+> Trabalhos relacionados
+>
+> Indicação (bastante resumida) da análise proposta
+>
+> Indicação (bastante resumida) dos resultados alcançados
+
+
 
 # Pergunta de Pesquisa
 Quais são os principais padrões moleculares associadas ao comportamento inibitório frente à enzima EGFR/ErbB1, relacionada ao câncer?
 
-# Bases de Dados
- Nós utilizaremos a base de dados Cancer Inhibitors[1] disponibilizada na plataforma Kaggle. Essa base contém informações sobre a estrutura de moléculas coletadas  a partir da ChEMBL[2]. Para cada uma dessas moléculas, há uma anotação se ela inibe ou não uma proteína quinase. Há oito proteínas disponíveis, mas apenas a EGFR/ErbB1 será utilizada nesse trabalho.
-
- Ao analisar a base de dados, é evidente que sua proposta é a identificação de padrões estruturais nas proteínas que justifiquem a inibição ou não inibição das enzimas a partir de um método de codificação chamado Fingerprinting. Este método apresenta diferentes abordagens, entre elas, as abordagens estruturais e as abordagens farmacofóricas (focadas nas funcionalidades da molécula), que se relacionam diretamente à forma que as moléculas são interpretadas pelos algoritmos de Data Mining.
-
+# Objetivos do Projeto
+> Como seu projeto propôs abordar o problema apresentado.
 
 # Metodologia
 Foi utilizada a metodologia _Knowledge Discovery in Databases_[11] proposta por Fayyad et al. em 2016. Partindo da base de dados _Cancer Inhibitors_[1] do Kaggle, foram selecionados os dados correspondentes à enzima EGFR/ErbB1 como conjunto de estudo. 
+
+
+# Bases de Dados e Evolução
+ Nós utilizamos a base de dados [Cancer Inhibitors](https://www.kaggle.com/xiaotawkaggle/inhibitors) [1] disponibilizada na plataforma Kaggle. Essa base contém informações sobre a estrutura de moléculas coletadas  a partir da ChEMBL[2]. Para cada uma dessas moléculas, há uma anotação se ela inibe ou não uma proteína quinase. Há oito proteínas disponíveis, mas apenas a EGFR/ErbB1 será utilizada nesse trabalho.
+
+ Ao analisar a base de dados, é evidente que sua proposta é a identificação de padrões estruturais nas proteínas que justifiquem a inibição ou não inibição das enzimas a partir de um método de codificação chamado Fingerprinting. Este método apresenta diferentes abordagens, entre elas, as abordagens estruturais e as abordagens farmacofóricas (focadas nas funcionalidades da molécula), que se relacionam diretamente à forma que as moléculas são interpretadas pelos algoritmos de Data Mining.
+
+### Bases Estudadas mas Não Adotadas
+
+Base de Dados | Endereço na Web | Resumo descritivo
+----- | ----- | -----
+Cyclin-dependent kinase 2: cdk2 | https://www.kaggle.com/xiaotawkaggle/inhibitors?select=cdk2.h5 | Base com moléculas inibidoras ou não-inibidoras da proteína kinase cdk2. Essa base contém 1270 inibidoras e 618 não-inibidoras da proteína kinase cdk2. 
+Glycogen synthase kinase-3 beta: gsk3b | https://www.kaggle.com/xiaotawkaggle/inhibitors?select=gsk3b.h5 | Base com moléculas inibidoras ou não-inibidoras da proteína kinase gsk3b. Essa base contém 1676 inibidoras e 512 não-inibidoras da proteína kinase gsk3b.
+Hepatocyte growth factor receptor: hgfr | https://www.kaggle.com/xiaotawkaggle/inhibitors?select=hgfr.h5 | Base com moléculas inibidoras ou não-inibidoras da proteína kinase hgfr. Essa base contém 2551 inibidoras e 326 não-inibidoras da proteína kinase hgfr.
+MAP kinase p38 alpha: mapkp38a | https://www.kaggle.com/xiaotawkaggle/inhibitors?select=map_k_p38a.h5 | Base com moléculas inibidoras ou não-inibidoras da proteína kinase mapkp38a. Essa base contém 4086 inibidoras e 582 não-inibidoras da proteína kinase mapkp38a.
+Tyrosine-protein kinase LCK: tpk_lck | https://www.kaggle.com/xiaotawkaggle/inhibitors?select=tpk_lck.h5 | Base com moléculas inibidoras ou não-inibidoras da proteína kinase tpk_lck. Essa base contém 1628 inibidoras e 539 não-inibidoras da proteína kinase tpk_lck.
+Tyrosine-protein kinase SRC: tpk_src | https://www.kaggle.com/xiaotawkaggle/inhibitors?select=tpk_src.h5 | Base com moléculas inibidoras ou não-inibidoras da proteína kinase tpk_src. Essa base contém 2414 inibidoras e 1171 não-inibidoras da proteína kinase tpk_src.
+Vascular endothelial growth factor receptor 2: vegfr2 | https://www.kaggle.com/xiaotawkaggle/inhibitors?select=vegfr2.h5 | Base com moléculas inibidoras ou não-inibidoras da proteína kinase vegfr2. Essa base contém 5656 inibidoras e 1202 não-inibidoras da proteína kinase vegfr2.
+
+Essas bases de dados não foram adotadas pois apresentavam poucos dados ou desbalanceamento significativo. 
+
+### Bases Estudadas e Adotadas
+
+Base de Dados | Endereço na Web | Resumo descritivo
+----- | ----- | -----
+Epidermal growth factor receptor erbB1: egfr_erbB1 | https://www.kaggle.com/xiaotawkaggle/inhibitors?select=egfr_erbB1.h5 |  Base com moléculas inibidoras ou não-inibidoras da proteína kinase egfr_erbB1. Essa base contém 5010 inibidoras e 1925 não-inibidoras da proteína kinase egfr_erbB1.
+
+Essa base contém dados de moléculas associadas à proteína kinase egfr_erbB1. Essas moléculas possuem um identificador, denominado CHEMBL, e são anotadas com *1* caso sejam inibidoras e *0* caso contrário.
+
+> Faça uma descrição sobre o que concluiu sobre esta base. Sugere-se que respondam perguntas ou forneçam informações indicadas a seguir:
+> * Qual o esquema/dicionário desse banco (o formato é livre)?
+> * O que descobriu sobre esse banco?
+> * Quais as transformações e tratamentos (e.g., dados faltantes e limpeza) feitos?
+> * Apresente aqui uma Análise Exploratória (inicial) sobre esta base.
+
 
 ## Preparo do Dataset:
 O preparo do Dataset inicia com a lista de proteínas fornecida na base de dados onde as proteínas são identificadas pelos seus respectivos ChEMBL IDs (identificadores na base de dados ChEMBL) e suas respectivas labels (1 para inibidoras e 0 para não inibidoras). Para seguir com a análise computacional proposta, foi necessário que estes dados fossem transformados em dados interpretáveis por algoritmos de aprendizado de máquina, para isso, foi empregado um método de Fingerprinting disponível na biblioteca RDKit[4].
@@ -66,6 +128,19 @@ Para _data mining_, exploraremos uma combinação de técnicas de aprendizagem d
 
 Usaremos algoritmos baseados em árvore de decisão pelo poder em capturar interações entre variáveis [5]. Esses algoritmos, porém, tendem a ser instáveis, e por isso modelos de ensemble serão avaliados. Faremos a seleção e visualização de um subconjunto de variáveis por meio dos valores de importância (“feature importance”) calculados usando a biblioteca SHAP[5] (SHapley Additive exPlanations). Por fim, algoritmos de agrupamento (clustering) usando a biblioteca Scikit-Learn[3] serão utilizados para visualizar grupos nos compostos inibidores e não inibidores. 
 
+
+### Integração entre Bases e Análise Exploratória
+
+> Descreva etapas de integração de fontes de dados e apresente a seguir uma análise exploratória que envolva ambas.
+>
+>
+>
+> Resultados de Análise Exploratória
+> * use estatística descritiva e gráficos;
+> * inclua gráficos de sobre a distribuição dos dados (e.g., histogramas e boxplots);
+> * analise correlação e use gráficos de dispersão;
+> * descreva os resultados/gráficos, os analise e contextualize com o tema definido.
+
 ### Importância de Variáveis e SHAP
 O objetivo da biblioteca SHAP é explicar a predição de uma observação a partir do cálculo da contribuição de cada variável independente. Os valores das variáveis independentes de uma observação atuam como participantes em uma coalisão, e os valores de Shapley nos dizem como distribuir de maneira justa um "pagamento" (no caso, o resultado da predição) entre essas variáveis, e baseia-se na teoria de jogos.
 
@@ -79,16 +154,24 @@ Uma das principais vantagens do valor Shapley é ser o único método que satisf
 
 Construindo em cima desse conceito, a biblioteca SHAP possui pequenas modificações que permitem a interpretações globais serem consistentes com interpretações locais (para cada observação), tendo em vista que valores Shapley individuais são as "unidades formadoras" da interpração global. Por contar com essa consistência e com forte fundamentação teórica, a bilioteca SHAP é uma alternativa muitas vezes preferida a métodos tradicionais de cálculo de importância de variáveis usadas em modelos baseados em árvores, como a simples contagem de quantas vezes uma variável foi utilizada ou a alteração média na impureza promovida por uma variável. É, por isso, escolhida nesse trabalho.
 
-# Ferramentas
+# Análises Realizadas
+
+### Ferramentas
  Para a execução desse projeto, utilizaremos a linguagem Python devido à disponibilidade de bibliotecas em seu ecossistema. Em particular, vamos utilizar as bibliotecas Scikit-Learn[3], que disponibiliza diversos algoritmos para aprendizagem de máquina, RDKit[4] para a manipulação das informações das moléculas e SHAP[5](_SHapley Additive exPlantions_), para interpretação dos modelos de aprendizado de máquina, entre outras que julgarmos necessárias durante o desenvolvimento do trabalho.
 
-# Cronograma
- |Atividades  | Abril | Maio | Junho |
- |--|--|--|--|
- |Revisão bibliográfica, entendimento e geração das fingerprints.  | X |  |  |
- |Criação e treino de modelos de classificação binária.  | X | X |  |
- |Investigação e visualização de padrões.  | X | X |  |
- |Consolidação do conhecimento adquirido.  |  | X | X |
+# Resultados
+
+# Discussão
+
+# Conclusão
+>Destacar as principais conclusões obtidas no desenvolvimento do projeto.
+>
+>Destacar os principais desafios enfrentados.
+>
+>Principais lições aprendidas.
+
+
+# Trabalhos Futuros
 
 # Referências Bibliográficas
  [1] XIAO, Kelvin, et al.. Cancer Inhibitors (Version 2). kaggle, 14 Jan. 2020. Disponível em: https://www.kaggle.com/xiaotawkaggle/inhibitors. Acesso em: 03 Abr. 2021.
@@ -120,3 +203,7 @@ Construindo em cima desse conceito, a biblioteca SHAP possui pequenas modificaç
 [14] RDKIT. Getting Started with the RDKit in Python. Disponível em: https://www.rdkit.org/docs/GettingStartedInPython.html#rogers. Acesso em: 21 jun. 2021.
 
 [15] CHEMBL. Chembl_webresource_client. Disponível em: https://github.com/chembl/chembl_webresource_client. Acesso em: 21 jun. 2021.
+
+[16] HDBSCAN. The hdbscan Clustering Library. Disponível em:  https://hdbscan.readthedocs.io/en/latest/index.html. Acesso em 23 jun. 2021.
+
+[17] UMAP. Uniform Manifold Approximation and Projection for Dimension Reduction. Disponível em:  https://umap-learn.readthedocs.io/en/latest/. Acesso em 23 jun. 2021.
