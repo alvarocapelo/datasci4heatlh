@@ -140,11 +140,11 @@ vice versa. Portanto, isso nos dá um bom indicativo de que podemos utilizar alg
 esses padrões e classificar as proteínas como inibidoras e não-inibidoras. 
 
 
-![Histograma da distribuição da frequência de ativação dos bits.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/hist_activation.png) 
+![Histograma da distribuição da frequência de ativação dos bits.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/images/hist_activation.png) 
 
 Figura 1: Histograma com o número de vezes que cada bir é ativado.
 
-![Histograma com a ativação média de cada bit.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/hist_mean_activation.png) 
+![Histograma com a ativação média de cada bit.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/images/hist_mean_activation.png) 
 
 Figura 2: Histograma com a ativação média de cada bit.
 
@@ -153,7 +153,7 @@ que apareciam apenas entre os inibidores, e aquelas que apareciam exclusivamente
 Figura 3. Dessa forma, pudemos certificar que essas estrturas se assemelhavam com o que já era conhecido na Literatura de inibidores da
 proteína kinase egfr_erbB1.  
 
-![Subestruturas moleculares presentes apenas em inibidores ou em não-inibidores.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/initial_substructures.png) 
+![Subestruturas moleculares presentes apenas em inibidores ou em não-inibidores.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/images/initial_substructures.png) 
 
 Figura 3: Subestruturas moleculares presentes apenas em poteínas inibidoras ou apenas em não-inibidoras.
 
