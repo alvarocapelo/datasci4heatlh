@@ -15,15 +15,6 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 
 
 # Descrição Resumida do Projeto
-  O câncer pode ser definido como uma síndrome que engloba mais de 200 doenças, em que as células se dividem expressivamente de forma anormal, invadindo outros tecidos. Cada tipo de câncer se atém a sua especificidade quanto à etiologia genética, histológica, celular, e bioquímica, divergindo assim quanto à progressão patológica, diagnóstico, prognóstico e resposta à terapêutica [6]. Este problema de saúde é de notoriedade e preocupação global, sendo uma das quatro principais causas de morte antes dos 70 anos de idade. Mais de 18 milhões de novos casos de câncer emergiram no mundo no ano de 2018, onde mais da metade destes casos evoluiu para óbito. O câncer de pulmão é o mais incidente, com mais de 2 milhões de casos, seguido pelo câncer de mama, cólon e reto, e próstata [7]. 
-
- É reconhecido que as tirosina quinases estão envolvidas em diversas etapas do desenvolvimento e progressão do câncer, contribuindo de forma ativa para a proliferação celular e metástase, sem estarem correlacionadas com a sua gênese [8]. Tirosina quinases são enzimas que atuam por mecanismos de fosforilação de polipeptídeos através do ATP, e estão diretamente associadas à proliferação, sobrevivência, diferenciação, funcionalidade e motilidade celular [10]. Essas enzimas são classificadas em dois grandes grupos nomeados receptores ou não receptores, sendo que o primeiro citado é um grupo que caracteriza um domínio de ligação transmembrana glicosilado, conectado a um domínio citoplasmático da enzima catalítica tirosina quinase [8].
-
- O primeiro receptor de proteína tirosina quinase descrito, o Epidermal Growth Factor Receptor (EGFR) é constituído por uma família de quatro membros, sendo eles o ErbB1/HER1, ErbB2/HER2, ErbB3/HER3 e ErbB4/HER4. Diversos tipos de cânceres têm sido associados com o aumento da estimulação e/ou expressão de ErbB1, como os tumores de bexiga, mama, cabeça e pescoço, rim, pulmão de células não pequenas e próstata, pelo qual se ligam com alta afinidade pelas proteínas Epidermal Growth Factor (EGF) e Transforming Growth Factor-α (TGF-α) [9].
-
- Diversas terapias na tentativa de inibição da ativação de proteínas tirosina quinase têm sido estudadas como terapia tumoral, entre as mais diversas podemos citar a utilização de pequenas moléculas inibidoras do substrato-ligante, bem como do complexo catalítico de tirosina quinase, e ainda mais inovador, a utilização de anticorpos que se ligam tanto em receptores quanto em ligantes [10].
-
- Portanto, é de extrema relevância a busca por novas moléculas inibidoras, de forma a viabilizar um tratamento efetivo, seguro e compatível com a vida de todos aqueles que padecem desta grande enfermidade chamada câncer. Tendo esse cenário em vista, buscamos explorar, por meio de ferramentas de ciência de dados, potenciais moléculas inibidoras de ErbB1/HER1, suportando o conhecimento que será construído por toda a rede científica global na solução desta problemática.
 
 
 # Vídeos do Projeto
@@ -41,16 +32,17 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 
 
 # Introdução e Referenciais de Teóricos
-> Contextualização do projeto
->
-> Caracterização do problema
->
-> Motivação
->
-> Relevância
->
-> Trabalhos relacionados
->
+  O câncer pode ser definido como uma síndrome que engloba mais de 200 doenças, em que as células se dividem expressivamente de forma anormal, invadindo outros tecidos. Cada tipo de câncer se atém a sua especificidade quanto à etiologia genética, histológica, celular, e bioquímica, divergindo assim quanto à progressão patológica, diagnóstico, prognóstico e resposta à terapêutica [6]. Este problema de saúde é de notoriedade e preocupação global, sendo uma das quatro principais causas de morte antes dos 70 anos de idade. Mais de 18 milhões de novos casos de câncer emergiram no mundo no ano de 2018, onde mais da metade destes casos evoluiu para óbito. O câncer de pulmão é o mais incidente, com mais de 2 milhões de casos, seguido pelo câncer de mama, cólon e reto, e próstata [7]. 
+
+ É reconhecido que as tirosina quinases estão envolvidas em diversas etapas do desenvolvimento e progressão do câncer, contribuindo de forma ativa para a proliferação celular e metástase, sem estarem correlacionadas com a sua gênese [8]. Tirosina quinases são enzimas que atuam por mecanismos de fosforilação de polipeptídeos através do ATP, e estão diretamente associadas à proliferação, sobrevivência, diferenciação, funcionalidade e motilidade celular [10]. Essas enzimas são classificadas em dois grandes grupos nomeados receptores ou não receptores, sendo que o primeiro citado é um grupo que caracteriza um domínio de ligação transmembrana glicosilado, conectado a um domínio citoplasmático da enzima catalítica tirosina quinase [8].
+
+ O primeiro receptor de proteína tirosina quinase descrito, o Epidermal Growth Factor Receptor (EGFR) é constituído por uma família de quatro membros, sendo eles o ErbB1/HER1, ErbB2/HER2, ErbB3/HER3 e ErbB4/HER4. Diversos tipos de cânceres têm sido associados com o aumento da estimulação e/ou expressão de ErbB1, como os tumores de bexiga, mama, cabeça e pescoço, rim, pulmão de células não pequenas e próstata, pelo qual se ligam com alta afinidade pelas proteínas Epidermal Growth Factor (EGF) e Transforming Growth Factor-α (TGF-α) [9].
+
+ Diversas terapias na tentativa de inibição da ativação de proteínas tirosina quinase têm sido estudadas como terapia tumoral, entre as mais diversas podemos citar a utilização de pequenas moléculas inibidoras do substrato-ligante, bem como do complexo catalítico de tirosina quinase, e ainda mais inovador, a utilização de anticorpos que se ligam tanto em receptores quanto em ligantes [10].
+
+ Portanto, é de extrema relevância a busca por novas moléculas inibidoras, de forma a viabilizar um tratamento efetivo, seguro e compatível com a vida de todos aqueles que padecem desta grande enfermidade chamada câncer. Tendo esse cenário em vista, exploraramos por meio de ferramentas de ciência de dados, potenciais moléculas inibidoras de ErbB1/HER1.
+
+
 > Indicação (bastante resumida) da análise proposta
 >
 > Indicação (bastante resumida) dos resultados alcançados
@@ -61,7 +53,7 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 Quais são os principais padrões moleculares associadas ao comportamento inibitório frente à enzima EGFR/ErbB1, relacionada ao câncer?
 
 # Objetivos do Projeto
-> Como seu projeto propôs abordar o problema apresentado.
+Identificar os principais padrões moleculares associados ao comportamento inibitório frente à enzima EGFR/ErbB1, relacionada ao câncer, através de técnicas de Machine Learning.
 
 # Metodologia
 Foi utilizada a metodologia _Knowledge Discovery in Databases_[11] proposta por Fayyad et al. em 2016. Partindo da base de dados _Cancer Inhibitors_[1] do Kaggle, foram selecionados os dados correspondentes à enzima EGFR/ErbB1 como conjunto de estudo. 
@@ -72,7 +64,7 @@ Foi utilizada a metodologia _Knowledge Discovery in Databases_[11] proposta por 
 
  Ao analisar a base de dados, é evidente que sua proposta é a identificação de padrões estruturais nas proteínas que justifiquem a inibição ou não inibição das enzimas a partir de um método de codificação chamado Fingerprinting. Este método apresenta diferentes abordagens, entre elas, as abordagens estruturais e as abordagens farmacofóricas (focadas nas funcionalidades da molécula), que se relacionam diretamente à forma que as moléculas são interpretadas pelos algoritmos de Data Mining.
 
-### Bases Estudadas mas Não Adotadas
+## Bases Estudadas mas Não Adotadas
 
 Base de Dados | Endereço na Web | Resumo descritivo
 ----- | ----- | -----
@@ -86,13 +78,11 @@ Vascular endothelial growth factor receptor 2: vegfr2 | https://www.kaggle.com/x
 
 Essas bases de dados não foram adotadas pois apresentavam poucos dados ou desbalanceamento significativo. 
 
-### Bases Estudadas e Adotadas
+## Bases Estudadas e Adotadas
 
 Base de Dados | Endereço na Web | Resumo descritivo
 ----- | ----- | -----
 Epidermal growth factor receptor erbB1: egfr_erbB1 | https://www.kaggle.com/xiaotawkaggle/inhibitors?select=egfr_erbB1.h5 |  Base com moléculas inibidoras ou não-inibidoras da proteína kinase egfr_erbB1. Essa base contém 5010 inibidoras e 1925 não-inibidoras da proteína kinase egfr_erbB1.
-
-Essa base contém dados de moléculas associadas à proteína kinase egfr_erbB1. Essas moléculas possuem um identificador, denominado CHEMBL, e são anotadas com *1* caso sejam inibidoras e *0* caso contrário.
 
 > Faça uma descrição sobre o que concluiu sobre esta base. Sugere-se que respondam perguntas ou forneçam informações indicadas a seguir:
 > * Qual o esquema/dicionário desse banco (o formato é livre)?
@@ -100,11 +90,9 @@ Essa base contém dados de moléculas associadas à proteína kinase egfr_erbB1.
 > * Quais as transformações e tratamentos (e.g., dados faltantes e limpeza) feitos?
 > * Apresente aqui uma Análise Exploratória (inicial) sobre esta base.
 
+Essa base contém dados de moléculas de proteínas associadas à proteína kinase egfr_erbB1. Essas proteínas são identificadas pelos seus respectivos ChEMBL IDs (identificadores na base de dados ChEMBL) e suas respectivas labels (1 para inibidoras e 0 para não inibidoras). Para seguir com a análise computacional proposta, foi necessário que estes dados fossem transformados em dados interpretáveis por algoritmos de aprendizado de máquina, para isso, foi empregado um método de Fingerprinting disponível na biblioteca RDKit[4].
 
-## Preparo do Dataset:
-O preparo do Dataset inicia com a lista de proteínas fornecida na base de dados onde as proteínas são identificadas pelos seus respectivos ChEMBL IDs (identificadores na base de dados ChEMBL) e suas respectivas labels (1 para inibidoras e 0 para não inibidoras). Para seguir com a análise computacional proposta, foi necessário que estes dados fossem transformados em dados interpretáveis por algoritmos de aprendizado de máquina, para isso, foi empregado um método de Fingerprinting disponível na biblioteca RDKit[4].
-
-## Geração de Fingerprints:
+### Geração de Fingerprints:
 
 O método de Fingerprinting utilizado gera Fingerprints conhecidas como Morgan Fingerprints ou Circular Fingerprints, vetores de extensão definida em que cada elemento represeta uma sub-estrutura molecular que compõe a molécula inputada. As sub-estruturas moleculares, por sua vez, são obtidas considerando um raio, quantidade de átomos vizinhos, determinado. Os inputs utilizados para a geração das Fingerprints dets projeto foram foram:
 
@@ -122,14 +110,8 @@ Esta informação foi armazenada para viabilizar a obtenção de informações i
 
 Por fim, as bases de dados resultantes para a construção dos modelos continham os ChEMBL IDs, Fingerprints, dicionários bitInfo e labels de cada proteína do Dataset original.
 
-## Data Mining:
 
-Para _data mining_, exploraremos uma combinação de técnicas de aprendizagem de máquina, análise estatística e visualização.
-
-Usaremos algoritmos baseados em árvore de decisão pelo poder em capturar interações entre variáveis [5]. Esses algoritmos, porém, tendem a ser instáveis, e por isso modelos de ensemble serão avaliados. Faremos a seleção e visualização de um subconjunto de variáveis por meio dos valores de importância (“feature importance”) calculados usando a biblioteca SHAP[5] (SHapley Additive exPlanations). Por fim, algoritmos de agrupamento (clustering) usando a biblioteca Scikit-Learn[3] serão utilizados para visualizar grupos nos compostos inibidores e não inibidores. 
-
-
-### Integração entre Bases e Análise Exploratória
+## Análise Exploratória
 
 > Descreva etapas de integração de fontes de dados e apresente a seguir uma análise exploratória que envolva ambas.
 >
@@ -140,6 +122,58 @@ Usaremos algoritmos baseados em árvore de decisão pelo poder em capturar inter
 > * inclua gráficos de sobre a distribuição dos dados (e.g., histogramas e boxplots);
 > * analise correlação e use gráficos de dispersão;
 > * descreva os resultados/gráficos, os analise e contextualize com o tema definido.
+
+
+A fim de se ter uma primeira ideia dos nossos dados, nós começamos por plotar o histograma com o número de vezes que 
+cada bit é ativado, como ilustrado na Figura 1. A partir desse gráfico, observamos que determinados bits eram ativados
+com maior que frequência que outros. Então, levantamos a pergunta se esses bits mais frequêntes eram de fato importantes
+para a ação inibitória de uma proteína, ou se eles apenas codificavam estruturas comuns a diversas moléculas sem ter qualquer
+relação com a ação inibitória. 
+
+Para respondermos essa pergunta, nós construímos outro histograma mas plotando separadamente os valores de ativação dos bits 
+em moléculas inibidoras e não-inibidoras. Porém, para que pudéssemos comparar as distribuições
+entre inibidores e não-inibidores, foi preciso normalizar essas contagens. Portanto, definimos a *ativação média*, que simplesmente
+conta as vezes que cada bit foi ativado e divide pelo total de moléculas. Realizamos esse processo separadamente para inibidores
+e não-inibidores e plotamos conjuntamente no mesmo histograma representado na Figura 2. Ao analisar o gráfico da Figura 2,
+podemos notar que claramente há bits que são ativamdos com maior frequência dentre os inibidores que detre os não-inibidores, e 
+vice versa. Portanto, isso nos dá um bom indicativo de que podemos utilizar algoritmos de aprendizado de máquina para aprender
+esses padrões e classificar as proteínas como inibidoras e não-inibidoras. 
+
+
+![Histograma da distribuição da frequência de ativação dos bits.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/hist_activation.png) 
+
+Figura 1: Histograma com o número de vezes que cada bir é ativado.
+
+![Histograma com a ativação média de cada bit.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/hist_mean_activation.png) 
+
+Figura 2: Histograma com a ativação média de cada bit.
+
+Para que pudéssemos ter uma interpretação que considerasse também o conhecimento de domínio, nós plotamos quais eram as subestruturas
+que apareciam apenas entre os inibidores, e aquelas que apareciam exclusivamente entre as proteínas não-inibidoras, como ilustrado na
+Figura 3. Dessa forma, pudemos certificar que essas estrturas se assemelhavam com o que já era conhecido na Literatura de inibidores da
+proteína kinase egfr_erbB1.  
+
+![Subestruturas moleculares presentes apenas em inibidores ou em não-inibidores.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/initial_substructures.png) 
+
+Figura 3: Subestruturas moleculares presentes apenas em poteínas inibidoras ou apenas em não-inibidoras.
+
+
+Além disso, a fim de termos uma ideia da distribuição das moléculas sobre o espaço de atributos, nós utilizamos o algoritmo
+UMAP [17] para reduzir o número de dimensões de 2048 para 2. A Figura 4 mostra essa representação em 2D. Podemos observar que 
+há determinados agrupamentos que parecem ser formados majoritariamente por moléculas inibidoras, outros por não-inibidoras, e 
+ainda outras regiões onde inibidoras e não-inibidoras estão mais misturadas. Com isso, nós levantamos a seguinte hipótese,
+é possível que haja diferentes combinações de subestruturas moleculares que provoquem a ação inibitória de uma proteína?
+Para responder essa pergunta, nós realizamos a análise de clusters dessas moléculas, como descrito na Seção "Análise de Clusters".   
+
+
+![Visualização da distribuição das moléculas sobre o espaço de atributos.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/misc/cluster_initial.png)
+
+Figura 4: Visualização da distribuição das moléculas sobre o espaço de atributos.
+
+# Análises Realizadas
+
+## Ferramentas
+ Para a execução desse projeto, utilizamos a linguagem Python devido à disponibilidade de bibliotecas em seu ecossistema. Em particular, usamos as bibliotecas Scikit-Learn[3], que disponibiliza diversos algoritmos para aprendizagem de máquina, RDKit[4] para a manipulação das informações das moléculas e SHAP(_SHapley Additive exPlantions_) [5], para interpretação dos modelos de aprendizado de máquina, além de outras bibliotecas amplamente utilizadas para a manipulação e visualização de dados (e.g., Matplotlib, Seaborn, Pandas, Numpy).
 
 ### Importância de Variáveis e SHAP
 O objetivo da biblioteca SHAP é explicar a predição de uma observação a partir do cálculo da contribuição de cada variável independente. Os valores das variáveis independentes de uma observação atuam como participantes em uma coalisão, e os valores de Shapley nos dizem como distribuir de maneira justa um "pagamento" (no caso, o resultado da predição) entre essas variáveis, e baseia-se na teoria de jogos.
@@ -152,12 +186,8 @@ A definição de um "pagamento" ou atribuição de importância justa pode ser d
 
 Uma das principais vantagens do valor Shapley é ser o único método que satisfaz todas as propriedades acima, axiomas que dão às explicações por ele explicadas fundamentação teórica. Além disso, está apoiado em uma sólida base matemática na teoria de jogos.
 
-Construindo em cima desse conceito, a biblioteca SHAP possui pequenas modificações que permitem a interpretações globais serem consistentes com interpretações locais (para cada observação), tendo em vista que valores Shapley individuais são as "unidades formadoras" da interpração global. Por contar com essa consistência e com forte fundamentação teórica, a bilioteca SHAP é uma alternativa muitas vezes preferida a métodos tradicionais de cálculo de importância de variáveis usadas em modelos baseados em árvores, como a simples contagem de quantas vezes uma variável foi utilizada ou a alteração média na impureza promovida por uma variável. É, por isso, escolhida nesse trabalho.
+Construida em cima desse conceito, a biblioteca SHAP possui pequenas modificações que permitem a interpretações globais serem consistentes com interpretações locais (para cada observação), tendo em vista que valores Shapley individuais são as "unidades formadoras" da interpração global. Por contar com essa consistência e com forte fundamentação teórica, a bilioteca SHAP é uma alternativa muitas vezes preferida a métodos tradicionais de cálculo de importância de variáveis usadas em modelos baseados em árvores, como a simples contagem de quantas vezes uma variável foi utilizada ou a alteração média na impureza promovida por uma variável. É, por isso, escolhida nesse trabalho.
 
-# Análises Realizadas
-
-### Ferramentas
- Para a execução desse projeto, utilizaremos a linguagem Python devido à disponibilidade de bibliotecas em seu ecossistema. Em particular, vamos utilizar as bibliotecas Scikit-Learn[3], que disponibiliza diversos algoritmos para aprendizagem de máquina, RDKit[4] para a manipulação das informações das moléculas e SHAP[5](_SHapley Additive exPlantions_), para interpretação dos modelos de aprendizado de máquina, entre outras que julgarmos necessárias durante o desenvolvimento do trabalho.
 
 # Resultados
 
