@@ -16,6 +16,13 @@ O presente projeto foi originado no contexto das atividades da disciplina de pó
 
 # Descrição Resumida do Projeto
 
+Os avanços em tecnologia da informação e em técnicas de processamento de dados veem permitindo avanços significativos também em outros domínios.
+Um desses domínios é o de descoberta de novos fármacos, no qual técnicas de Aprendizado de Máquina podem ser utilizados para otimizar várias etapas do processo. Por exemplo, na descoberta e predição de pequenas moléculas candidatas a inibição. Interessados nesta etapa em particular, neste trabalho, utilizamos _fingerprints_ de Morgan para representar moléculas candidatas e aplicamos algoritmos de aprendizado de máquina baseados em árvore para prever ação inibitória frente à enzima EGFR/ErbB1, associado ao câncer. A seguir, aplicamos algoritmos de interpretação para identificar e investigar os principais padrões que correspondem a uma atividade inibitória.
+Esse método foi capaz de corretamente identificar o padrões moleculares de relevância e atividade farmacofórica frente à enzima alvo conhecida em literatura, sugerindo que esse método pode ser usado de maneira análoga no estudo e investigação de moléculas candidatas e padrões moleculares para inibição de outras enzimas-alvo.
+Adicionalmente, foram observados subgrupos dentre as moléculas inibidoras caracterizados por padrões moleculares específicos. Essas especificidades foram analisadas para três grupos, mas a investigação requer trabalhos futuros.
+
+*Palavras-chave*: _morgan fingerprints_, _predição_, _interação molécula-enzima_, _aprendizado de máquina_
+
 
 # Vídeos do Projeto
 
