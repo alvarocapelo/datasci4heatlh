@@ -219,9 +219,13 @@ RDKit [4] é uma biblioteca com implementação em C++ e com uma interface em Py
 
 **Análise Exploratória e Modelagem**
 
-Utilizamos as bibliotecas Matplotlib, Seaborn, Pandas, Numpy e Scipy do ecossistema Python para manipulação e visualização de dados.
+Utilizamos as bibliotecas [Matplotlib](https://matplotlib.org/), 
+[Seaborn](https://seaborn.pydata.org/), 
+[Pandas](https://pandas.pydata.org/docs/getting_started/index.html), 
+[Numpy](https://numpy.org/) e 
+[Scipy](https://www.scipy.org/) do ecossistema Python para manipulação e visualização de dados.
 
-Para modelagem, optamos pela biblioteca Scikit-Learn[3], que disponibiliza diversos algoritmos de aprendizagem de máquina em uma interface amigável e estável. Em particular, neste trabalho utilizamos algoritmos de _Boosting_ e _Bagging_ com Árvores de Decisão como estimador-padrão.
+Para modelagem, optamos pela biblioteca Scikit-Learn [3], que disponibiliza diversos algoritmos de aprendizagem de máquina em uma interface amigável e estável. Em particular, neste trabalho utilizamos algoritmos de _Boosting_ e _Bagging_ com Árvores de Decisão como estimador-padrão.
 
 A escolha da Árvore de Decisão como algoritmo base no _ensemble_ foi motivada, neste trabalho, principalmente por sua habilidade na captura de interações entre variáveis (_features_) [5].
 Sabendo que o conjunto de dados contém exclusivamente presença ou ausência de uma subestrutura (matrix esparsa de 0's e 1's), é razoável supor que uma boa discriminação entre moléculas inibidoras e não-inibidoras seja observada pela interação (combinação de ausência/presença) dos bits que codificam essas subestruturas.
