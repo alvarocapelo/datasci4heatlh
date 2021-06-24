@@ -199,9 +199,28 @@ quanto à classificação de inibidores. Portanto, será necessário um estudo m
 de modo a entendermos como elas se combinam para gerar a ação inibitória frente à proteína kinase ErbB1. 
 
 ## Ferramentas
- Para a execução desse projeto, utilizamos a linguagem Python devido à disponibilidade de bibliotecas em seu ecossistema. Em particular, usamos as bibliotecas Scikit-Learn[3], que disponibiliza diversos algoritmos para aprendizagem de máquina, RDKit[4] para a manipulação das informações das moléculas e SHAP(_SHapley Additive exPlantions_) [5], para interpretação dos modelos de aprendizado de máquina, além de outras bibliotecas amplamente utilizadas para a manipulação e visualização de dados (e.g., Matplotlib, Seaborn, Pandas, Numpy).
 
-### Importância de Variáveis e SHAP
+**Linguagem de programação**
+
+Para a execução desse projeto, utilizamos a linguagem Python devido à vasta disponibilidade de bibliotecas em seu ecossistema.
+
+**Geração de fingerpints**
+
+RDKit[4] é uma bilioteca com implementação em C++ e com uma interface em Python. Ela foi utilizada neste trabalho para manipular, gerar representaçãoes computacionais (através de _fingerprints_), visualizar e interpretar informações de moléculas.
+
+**Análise Exploratória e Modelagem**
+
+Utlizamos as bibliotecas Matplotlib, Seaborn, Pandas, Numpy e Scipy do ecossitema Python para manipulação e visualização de dados.
+
+Para modelagem, optamos pela biblioteca Scikit-Learn[3], que disponibiliza diversos algoritmos de aprendizagem de máquina em uma interface amigável e estável. Em particular, neste trabalho utilizamos algoritmos de _Boosting_ e _Bagging_ com Árvores de Decisão como estimador-padrão.
+
+A escolha da Árvore de Decisão como algoritmo base no _ensemble_ foi motivada, neste trabalho, principalmente por sua habilidade na captura de interações entre variáveis (_features_) [5].
+Sabendo que o conjunto de dados contém exclusivamente presença ou ausência de uma subestrutura (matrix esparsa de 0's e 1's), é razoável supor que uma boa discriminação entre moléculas inibidoras e não-inibidoras seja observada pela interação (combinação de ausência/presença) dos bits que codificam essas subestruturas.
+A estratégia de _ensemble_ foi usada para melhora de performance e prevenção contra _overfitting_(problema que afeta muito Árvores de Decisão[5]). Essa estratégia permite extrair o conhecimento usando diversas árvores, seja em paralelo (_bootstrap aggregating_ ou _bagging_) ou em sequência (_boosting_).
+
+**Aprendizado de Máquina interpretável [5]**
+
+Uma das maneiras de se interpretar modelos "caixa-preta" de aprendizado de máquina é através da importância de variáveis (_features_).
 O objetivo da biblioteca SHAP é explicar a predição de uma observação a partir do cálculo da contribuição de cada variável independente. Os valores das variáveis independentes de uma observação atuam como participantes em uma coalisão, e os valores de Shapley nos dizem como distribuir de maneira justa um "pagamento" (no caso, o resultado da predição) entre essas variáveis, e baseia-se na teoria de jogos.
 
 A definição de um "pagamento" ou atribuição de importância justa pode ser definida por 4 características:
@@ -212,7 +231,7 @@ A definição de um "pagamento" ou atribuição de importância justa pode ser d
 
 Uma das principais vantagens do valor Shapley é ser o único método que satisfaz todas as propriedades acima, axiomas que dão às explicações por ele explicadas fundamentação teórica. Além disso, está apoiado em uma sólida base matemática na teoria de jogos.
 
-Construida em cima desse conceito, a biblioteca SHAP possui pequenas modificações que permitem a interpretações globais serem consistentes com interpretações locais (para cada observação), tendo em vista que valores Shapley individuais são as "unidades formadoras" da interpração global. Por contar com essa consistência e com forte fundamentação teórica, a bilioteca SHAP é uma alternativa muitas vezes preferida a métodos tradicionais de cálculo de importância de variáveis usadas em modelos baseados em árvores, como a simples contagem de quantas vezes uma variável foi utilizada ou a alteração média na impureza promovida por uma variável. É, por isso, escolhida nesse trabalho.
+Construida em cima desse conceito, a biblioteca SHAP permite uma interpretação global consistente com interpretações locais (para cada observação), uma vez que valores Shapley individuais são as "unidades formadoras" da interpração global. Por contar com essa consistência e com forte fundamentação teórica, a bilioteca SHAP é uma alternativa muitas vezes preferida a métodos tradicionais de cálculo de importância de variáveis usadas em modelos baseados em árvores, como a simples contagem de quantas vezes uma variável foi utilizada ou a alteração média na impureza promovida por uma variável. É, por isso, escolhida nesse trabalho.
 
 # Resultados e Discussão
 
