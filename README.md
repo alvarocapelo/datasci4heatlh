@@ -389,12 +389,12 @@ avaliada em estudos futuros.
 # Conclusão
 
 Neste trabalho, nos propusemos a extrair conhecimento combinando técnicas de representação, aprendizado de máquina e interpretação de modelos.
-Através desse método, fomos capazes de identificar as subestruturas moleculares mais importantes para a predição de propriedade inbitória de pequenas moléculas sobre a enzima-alvo EGFR/ErbB1, associada ao câncer.
-Em especial, verificamos que as subestruturas de maior importância eram bastante semelhantes à quinazolina, uma região farmacofórica considerada de importante contribuição para a inibição da ErbB1 em literatura escializada do domínio farmacêutico.
+Através desse método, fomos capazes de identificar os principais padrões moleculares para a predição de propriedade inbitória de pequenas moléculas sobre a enzima-alvo EGFR/ErbB1, associada ao câncer, através da representação desses padrões na forma de subestruturas moleculares.
+Especificamente, verificamos que as subestruturas de maior importância eram bastante semelhantes à quinazolina, uma região farmacofórica considerada de importante contribuição para a inibição da ErbB1 em literatura especializada do domínio farmacêutico.
 
-Para além disso, utilizamos algumas das subsestruturas de maior importância calculada para realizar uma análise de _clusters_ com o intuito de verificar se, mesmod entro das moléculas inibidoras, haveriam grupos com características específicas. Verificamos que pelo menos 3 grupos, dentro do conjunto estudado, apresentaram esse comportamento e sugerimos quais seriam as subestruturas que caracterizariam esses _clusters_.
+Para além disso, utilizamos algumas das subsestruturas de maior importância calculada para realizar uma análise de _clusters_ com o intuito de verificar se, mesmo dentro das moléculas inibidoras, haveriam grupos com características específicas. Verificamos que pelo menos 3 grupos, dentro do conjunto estudado, apresentaram esse comportamento e sugerimos quais seriam as subestruturas que caracterizariam esses _clusters_.
  
-Observamos um bom compromisso entre performance e interpretação, tendo em vista a acurácia de 85.4% de acurária em conjunto de teste e o relatado no mprimeiro parágrafo desta seção. Isso sugere que a abordagem utilizada neste trabalho apresenta potencial para o estudo de interação moléculas candidatas-proteínas tanto em cenários já estudados, sugerindo novo conhecimento, quanto na procura regiões farmacofóricas em cenários ainda não estudados.
+Observamos um bom compromisso entre performance e interpretação, tendo em vista a acurácia de 84.0% de acurária em conjunto de teste e o relatado no primeiro parágrafo desta seção. Isso sugere que a abordagem utilizada neste trabalho apresenta potencial para o estudo de interação moléculas candidatas-proteínas tanto em cenários já estudados, sugerindo novo conhecimento, quanto na procura regiões farmacofóricas em cenários ainda não estudados.
 
 # Trabalhos Futuros
 
