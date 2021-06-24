@@ -390,8 +390,7 @@ avaliada em estudos futuros.
 
 # Conclusão
 
-Neste trabalho, nos propusemos a extrair conhecimento combinando técnicas de representação, aprendizado de máquina e interpretação de modelos.
-Através desse método, fomos capazes de identificar os principais padrões moleculares para a predição de propriedade inbitória de pequenas moléculas sobre a enzima-alvo EGFR/ErbB1, associada ao câncer, através da representação desses padrões na forma de subestruturas moleculares.
+Neste trabalho, fomos capazes de identificar os principais padrões moleculares para a predição de propriedade inbitória de pequenas moléculas sobre a enzima-alvo EGFR/ErbB1, associada ao câncer, combinando técnicas de representação de moléculas computacionalmente e aplicação e interpretação de modelos de aprendizado de máquina.
 Especificamente, verificamos que as subestruturas de maior importância eram bastante semelhantes à quinazolina, uma região farmacofórica considerada de importante contribuição para a inibição da ErbB1 em literatura especializada do domínio farmacêutico.
 
 Para além disso, utilizamos algumas das subsestruturas de maior importância calculada para realizar uma análise de _clusters_ com o intuito de verificar se, mesmo dentro das moléculas inibidoras, haveriam grupos com características específicas. Verificamos que pelo menos 3 grupos, dentro do conjunto estudado, apresentaram esse comportamento e sugerimos quais seriam as subestruturas que caracterizariam esses _clusters_.
