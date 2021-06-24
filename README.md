@@ -315,7 +315,7 @@ a ação inibitória da maior parte das moléculas dos clusters 2, 3 e 5.
 
 
 Método | Acurácia | Sensibilidade | Especificidade
------ | -----
+----- | ----- | ----- | -----
 Cluster Knowledge based |  61.9 | 52.5 | **82.7**
 **Gradient Boosting** |  **84.0** | **89.6** | 71.9
 
