@@ -307,8 +307,8 @@ Além disso, podemos ver que apenas os bits 1452 e 650 são ativados dentre os c
 majoritariamente não-inibidores (clusters 7 e 11), e a incidência é igual a 1, ao passo que eles ou não são ativados dentre 
 os inibidores ou também têm incidência 1. Portanto, esses bits não são suficientes para classificar os não-inibidores. 
 Analogamente, os bits 1928 e 650 não são suficientes para explicar os inibidores dos clusters 2, 3 e 5. 
- O que representa um resultado razoável, uma vez que as estruturas codificadas pelos bits 1452, 650 e 1928 são bastante simples, como podem ser 
-observadas na Figura 6. Já os bits 329 e 1482 são relevantes para a classificação de inibidores dentro do cluster 2, mas não dentro dos clusters 3 e 5. O bit 1482 
+ O que representa um resultado razoável, uma vez que as estruturas codificadas pelos bits 1452, 650 e 1928 são bastante simples, como pode ser 
+observado na Figura 6. Já os bits 329 e 1482 são relevantes para a classificação de inibidores dentro do cluster 2, mas não dentro dos clusters 3 e 5. O bit 1482 
 parece ser importante para classificar os não-inibidores do cluster 3 e os inibidores do cluster 2. Por fim, o bit 1077 é 
 relevante para a classificação de inibidores dentro do cluster 5. Na Figura 8 resumimos os bits característicos de cada
 cluster. No notebook [Bit_Importances_Analysis](https://github.com/alvarocapelo/datasci4heatlh/blob/main/notebooks/Bit_Importances_Analysis.ipynb)
@@ -380,14 +380,13 @@ avaliada em estudos futuros.
 
 # Conclusão
 
-> Destacar as principais conclusões obtidas no desenvolvimento do projeto.
-> bits de maior importância encontrados através de método proposto correspondem a estruturas com atividade farmacofóricas conhecidas em literatura: quinazolina
-> incluir conclusão do André
-> <imagem da quinazolina>
-> isso sugere que esse método pode ser usado como processo inicial de busca de regiões farmacologicamente ativas em out    ras interações candidato-enzima
-> encontrados subgrupos dentro das moléculas inibidoras com características específicas e distintas entre si
-> Destacar os principais desafios enfrentados.
-> Principais lições aprendidas.
+Neste trabalho, nos propusemos a extrair conhecimento combinando técnicas de representação, aprendizado de máquina e interpretação de modelos.
+Através desse método, fomos capazes de identificar as subestruturas moleculares mais importantes para a predição de propriedade inbitória de pequenas moléculas sobre a enzima-alvo EGFR/ErbB1, associada ao câncer.
+Em especial, verificamos que as subestruturas de maior importância eram bastante semelhantes à quinazolina, uma região farmacofórica considerada de importante contribuição para a inibição da ErbB1 em literatura escializada do domínio farmacêutico.
+
+Para além disso, utilizamos algumas das subsestruturas de maior importância calculada para realizar uma análise de _clusters_ com o intuito de verificar se, mesmod entro das moléculas inibidoras, haveriam grupos com características específicas. Verificamos que pelo menos 3 grupos, dentro do conjunto estudado, apresentaram esse comportamento e sugerimos quais seriam as subestruturas que caracterizariam esses _clusters_.
+ 
+Observamos um bom compromisso entre performance e interpretação, tendo em vista a acurácia de 85.4% de acurária em conjunto de teste e o relatado no mprimeiro parágrafo desta seção. Isso sugere que a abordagem utilizada neste trabalho apresenta potencial para o estudo de interação moléculas candidatas-proteínas tanto em cenários já estudados, sugerindo novo conhecimento, quanto na procura regiões farmacofóricas em cenários ainda não estudados.
 
 # Trabalhos Futuros
 
