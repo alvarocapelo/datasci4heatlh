@@ -104,7 +104,14 @@ A geração de uma Fingerprint tem como primeiro passo a identificação de cada
 
 Durante a geração da Fingerprint, a biblioteca RDKit permite o armazenamento de um dicionário (bitInfo) onde as chaves são os índices do vetor (Fingerprint) codificados pela molécula e os valores são tuplas com a posição dos átomos e raios que codificaram determinada estrutura [14].
 
-{índice: (posição do átomo, raio do átomo)}
+```
+{
+    índice: [
+        (posição do átomo, raio do átomo),
+        ...
+    ]
+}
+```
  
 Esta informação foi armazenada para viabilizar a obtenção de informações interpretáveis sobre a moléculas além de permitir a visualização das sub-estruturas de forma isolada.
 
