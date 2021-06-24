@@ -371,10 +371,6 @@ da quinazolina (Figura 9). Ele também apresenta o maior valor médio de SHAP, i
 O bit 489 também codifica uma subestrutura associada à quinazolina, de forma que 4 dos 10 bits
 mais importantes parecem codificar subestruturas de diferentes tamanhos associadas a essa região farmacofórica.
 
-> Sugestão: substituir a partir de "Analogamente ..." por
->
-
-
 Em particular, o bit 329, que caracteriza o cluster 2, representa a substituição em ‘Y’ no modelo da figura 17, caracterizando um grupo substituinte de anilina, em que sua presença corrobora para uma interação hidrofóbica, já discutida anteriormente.
 Alguns dos bits que contribuem com alguma importância para a distinção entre moléculas inibidoras e não-inibidoras não foram avaliados em profundidade neste trabalho, e.g., bits 1077, 366, 650, 1482 e 1928. Um estudo mais detalhado desses bits fica para escopo de trabalhos futuros.
 
