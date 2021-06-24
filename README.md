@@ -368,16 +368,12 @@ Em concordância com a literatura, verificamos que os três bits de maior import
 de acordo com o gráfico da Figura 5, codificam subestruturas moleculares que fazem parte do grupo farmacofórico quinazolina, importante para a inibição das 
 enzima ErbB1. Em particular, o bit 1367 (Figura 6) é o responsável por codificar  a subestrutura que mais se aproxima da estrutura 
 da quinazolina (Figura 9). Ele também apresenta o maior valor médio de SHAP, inclusive bastante diferente dos demais bits. 
-Analogamente 5 dos 10 bits mais importantes parecem codificar subestruturas de diferentes tamanhos associadas a essa região farmacofórica.
-Sendo eles os bits 329, 489, 1226, 1367 e 1452.
+O bit 489 também codifica uma subestrutura associada à quinazolina, de forma que 4 dos 10 bits
+mais importantes parecem codificar subestruturas de diferentes tamanhos associadas a essa região farmacofórica.
 
 > Sugestão: substituir a partir de "Analogamente ..." por
 >
-> O bit 489 também codifica uma subestrutura associada à quinazolina, de forma que 4 dos 10 bits
->
-> mais importantes parecem codificar subestruturas de diferentes tamanhos associadas a essa 
->
-> região farmacofórica.
+
 
 Em particular, o bit 329, que caracteriza o cluster 2, representa a substituição em ‘Y’ no modelo da figura 17, caracterizando um grupo substituinte de anilina, em que sua presença corrobora para uma interação hidrofóbica, já discutida anteriormente.
 Alguns dos bits que contribuem com alguma importância para a distinção entre moléculas inibidoras e não-inibidoras não foram avaliados em profundidade neste trabalho, e.g., bits 1077, 366, 650, 1482 e 1928. Um estudo mais detalhado desses bits fica para escopo de trabalhos futuros.
