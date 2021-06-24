@@ -362,15 +362,16 @@ da quinazolina (Figura 9). Ele também apresenta o maior valor médio de SHAP, i
 Analogamente 5 dos 10 bits mais importantes parecem codificar subestruturas de diferentes tamanhos associadas a essa região farmacofórica.
 Sendo eles os bits 329, 489, 1226, 1367 e 1452.
 
-O bit 329 que caracteriza o cluster 2 representa a substituição em ‘Y’ no modelo da Figura 9, caracterizando um grupo 
-substituinte de anilina, em que sua presença corrobora para uma interação hidrofóbica, já discutida anteriormente. De 
-maneira análoga para o cluster 5, vislumbramos que o bit 1077 também pertence ao mesmo de substituinte em ‘Y’, com as mesmas 
-características químicas e estruturais.
+> Sugestão: substituir a partir de "Analogamente ..." por
+>
+> O bit 489 também codifica uma subestrutura associada à quinazolina, de forma que 4 dos 10 bits
+>
+> mais importantes parecem codificar subestruturas de diferentes tamanhos associadas a essa 
+>
+> região farmacofórica.
 
-Outros bits não mencionados aqui, e que correspondem com alguma importância para a distinção entre moléculas inibidoras e 
-não-inibidoras, tais como os bits 366, 650, 1482 e 1928 correspondem a substituições realizadas em ‘X’ e ‘Y’ que podem 
-estar presentes em algumas moléculas inibidoras, refletindo de maneira já exemplificada, a correlação com sua atividade 
-de interação com a enzima.
+Em particular, o bit 329, que caracteriza o cluster 2, representa a substituição em ‘Y’ no modelo da figura 17, caracterizando um grupo substituinte de anilina, em que sua presença corrobora para uma interação hidrofóbica, já discutida anteriormente.
+Alguns dos bits que contribuem com alguma importância para a distinção entre moléculas inibidoras e não-inibidoras não foram avaliados em profundidade neste trabalho, e.g., bits 1077, 366, 650, 1482 e 1928. Um estudo mais detalhado desses bits fica para escopo de trabalhos futuros.
 
 Vale destacar os exemplos de moléculas, anotadas como não-inibidoras no dataset, pertencentes aos clusters 2, 3 e 5 que 
 apresentam estrutura semelhante a moléculas estudadas por Li S. et. al. [22] e conhecidas em literatura por possuírem 
