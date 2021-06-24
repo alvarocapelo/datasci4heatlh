@@ -28,13 +28,13 @@ Adicionalmente, foram observados subgrupos dentre as moléculas inibidoras carac
 
 [Vídeo da Proposta](https://github.com/alvarocapelo/datasci4heatlh/blob/main/asset/datasci4health_proposta_projeto.mp4)
 
-[Vídeo da Apresentação Final]() <font color='red'>(LINK)</font>
+[Vídeo da Apresentação Final]()
 
 # Slides do Projeto
 
-[Slides da Proposta]()<font color='red'>(LINK)</font>
+[Slides da Proposta]()
 
-[Slides da Apresentação Final]()<font color='red'>(LINK)</font>
+[Slides da Apresentação Final]()
 
 
 
@@ -49,6 +49,11 @@ Adicionalmente, foram observados subgrupos dentre as moléculas inibidoras carac
 
  Portanto, é de extrema relevância a busca por novas moléculas inibidoras, de forma a viabilizar um tratamento efetivo, seguro e compatível com a vida de todos aqueles que padecem desta grande enfermidade chamada câncer. Tendo esse cenário em vista, exploraramos por meio de ferramentas de ciência de dados, potenciais moléculas inibidoras de ErbB1/HER1.
 
+```
+- adicionar parágrafo sobre Machine Learning aplicado a descoberta de drogas. referenciar papers: André
+- Machine Learning Methods in Drug Discovery, Patel, L. et al. doi:10.3390
+- Cano, G.; Garcia-Rodriguez, J.; Garcia-Garcia, A.; Perez-Sanchez, H.; Benediktsson, J.; Thapa, A.; Barr, A. Automatic     selection of molecular descriptors using random forest: Application to drug discovery. Expert Syst. Appl. 2017, 72, 151–15    9.
+```
 
 > Indicação (bastante resumida) da análise proposta
 >
@@ -159,6 +164,35 @@ inibidoras e em azul as não-inibidoras.
 
 # Análises Realizadas
 
+Geração usando RDKit e estudo de _fingerprints_: visualização de subestruturas e significados dos _bits_
+Separado dataset entre treino e teste, usando 20% para teste
+- Usados modelos de ensemble de árvore <lista>
+- otimização de parâmetros através de busca randomizada otimizando <lista_de_hiperparâmetros> buscando boa performance     com minimização de _overfitting_
+- validação cruzada em 5 folds
+- Performance avaliada por acurácia dado conjunto de dados relativamente balanceado
+- cálculo de Sensibilidade e Especificidade
+7 - Interpretação de modelo vencedor usando SHAP:
+- escolhidos arbitrariamente 10 bits mais importantes
+- buscado em literatura conhecimento sobre moléculas inibidoras para comparação com bits mais importantes
+- Utilização de HDSCAN para análises de clusters
+- objetivo de encontrar grupos de moléculas com particularidades, mesmo dentro de inibidoras
+- Utlização de UMAP para visualizar clusters em 2 dimensões
+
+## Modelagem
+
+Seguindo nossa metodologia, nessa etapa nós objetivamos treinar algoritmos de classificação de modo a posteriormente extrairmos,
+por meio da biblioteca SHAP, os bits (atributos) de maior relevância estudá-los em detalhe. Ou seja, esse passo da nossa metodologia
+funcionaria como uma etapa de "_Feature Selection_". Então, nós experimentamos algoritmos que não apenas resultassem em boa 
+acurácia na classifocação, mas também que possibilitassem a explicabilidade do método de decisão. Dessa forma, nós decidimos
+trabalhar com algoritmos baseados em árvores de decisão, em particular os algoritmos 
+[Random Forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html), 
+[Extra Trees](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html?highlight=extra%20trees#sklearn.ensemble.ExtraTreesClassifier), 
+[Ada Boost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html?highlight=ada%20boost#sklearn.ensemble.AdaBoostClassifier) e
+ [Gradient Boosting](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html?highlight=gradient%20boosting#sklearn.ensemble.GradientBoostingClassifier), todos disponíveis na biblioteca do Scikit-Learn.
+ Avaliamos a performance desses algoritmos, separamos nosso conjunto de dados como sendo 80% para treino e validação e 20% para 
+ teste. Ademais, como nossa base tem um volume de dados restrito, utilizamos a abordagem de validação cruzada (5-fold), os resultados são apresentados
+ na Tabela 1. Mais detalhes sobre a modelagem podem ser obtidos no notebook [Modelling](https://github.com/alvarocapelo/datasci4heatlh/blob/main/notebooks/Modelling.ipynb).
+
 ## Ferramentas
  Para a execução desse projeto, utilizamos a linguagem Python devido à disponibilidade de bibliotecas em seu ecossistema. Em particular, usamos as bibliotecas Scikit-Learn[3], que disponibiliza diversos algoritmos para aprendizagem de máquina, RDKit[4] para a manipulação das informações das moléculas e SHAP(_SHapley Additive exPlantions_) [5], para interpretação dos modelos de aprendizado de máquina, além de outras bibliotecas amplamente utilizadas para a manipulação e visualização de dados (e.g., Matplotlib, Seaborn, Pandas, Numpy).
 
@@ -175,20 +209,20 @@ Uma das principais vantagens do valor Shapley é ser o único método que satisf
 
 Construida em cima desse conceito, a biblioteca SHAP possui pequenas modificações que permitem a interpretações globais serem consistentes com interpretações locais (para cada observação), tendo em vista que valores Shapley individuais são as "unidades formadoras" da interpração global. Por contar com essa consistência e com forte fundamentação teórica, a bilioteca SHAP é uma alternativa muitas vezes preferida a métodos tradicionais de cálculo de importância de variáveis usadas em modelos baseados em árvores, como a simples contagem de quantas vezes uma variável foi utilizada ou a alteração média na impureza promovida por uma variável. É, por isso, escolhida nesse trabalho.
 
-## Modelagem
+# Resultados e Discussão
 
-Seguindo nossa metodologia, nessa etapa nós objetivamos treinar algoritmos de classificação de modo a posteriormente extrairmos,
-por meio da biblioteca SHAP, os bits (atributos) de maior relevância estudá-los em detalhe. Ou seja, esse passo da nossa metodologia
-funcionaria como uma etapa de "_Feature Selection_". Então, nós experimentamos algoritmos que não apenas resultassem em boa 
-acurácia na classifocação, mas também que possibilitassem a explicabilidade do método de decisão. Dessa forma, nós decidimos
-trabalhar com algoritmos baseados em árvores de decisão, em particular os algoritmos 
-[Random Forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html), 
-[Extra Trees](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html?highlight=extra%20trees#sklearn.ensemble.ExtraTreesClassifier), 
-[Ada Boost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html?highlight=ada%20boost#sklearn.ensemble.AdaBoostClassifier) e
- [Gradient Boosting](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html?highlight=gradient%20boosting#sklearn.ensemble.GradientBoostingClassifier), todos disponíveis na biblioteca do Scikit-Learn.
- Avaliamos a performance desses algoritmos, separamos nosso conjunto de dados como sendo 80% para treino e validação e 20% para 
- teste. Ademais, como nossa base tem um volume de dados restrito, utilizamos a abordagem de validação cruzada (5-fold), os resultados são apresentados
- na Tabela 1. Mais detalhes sobre a modelagem podem ser obtidos no notebook [Modelling](https://github.com/alvarocapelo/datasci4heatlh/blob/main/notebooks/Modelling.ipynb).
+Método | Acurácia
+----- | -----
+Ada Boost | 80.8
+Extra Trees | 81.1
+Random Forest | 82.3 
+Gradient Boosting | 85.4
+
+Tabela 1: Resultados obtidos a partir da validação cruzada (5-fold) dos modelos treinados.
+
+> colocar figura de SHAP importância de features
+> colocar figura do slide de bits mais importantes
+> textos André
 
 ## Análise de Clusters
 
@@ -211,7 +245,7 @@ o resultado da clusterização, onde o cluster de índice -1 indica outliers.
 
 ![Visualização dos clusters obtidos.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/asset/images/table_bits.png)
 
-Tabela 1: Essa tabela mostra a taxa de incidência dos bits mais importantes dentro de cada cluster.
+Tabela 2: Essa tabela mostra a taxa de incidência dos bits mais importantes dentro de cada cluster.
 
 A Figura 5 mostra à esquerda a distribuição das moléculas de acordo com a anotação original se elas são inibidoras ou não. 
 Além disso, à direita temos o resultado da clusterização, foram encontrados doze clusters mais um grupo de outliers. 
@@ -223,6 +257,8 @@ número de não inibidores.
 Assim, realizamos uma análise comparativa entre os clusters 2, 3, 5, 7 e 11, onde analisamos a taxa de incidência de cada 
 bit em cada clusters. A taxa de incidência é definida como sendo a média de vezes que um dado bit é ativado dentre os 
 inibidores dividida pela média de ativação dentre os não-inibidores. Os resultados são apresentados na Tabela 2. 
+
+> imagem bits característicos dos clusters
 
 Podemos observar que o bit 1367 não é ativado nos clusters com mais não-inibidores, enquanto que ele tem uma incidência 
 maior ou igual a 1 para os clusters com maioria de inibidores, indicando que esse bit têm importância significativa para 
@@ -245,29 +281,23 @@ executamos sobre o conjunto de teste. Esse método apresentou uma acurácia de 6
 respectivamente. Portanto, acreditamos que esse método pode ser bastante aplicável na prática, porém para se ter resultados mais 
 precisos de classificação de fato serão necessários algoritmos de aprendizado de máquina, tais como os que apresentamos nesse trabalho (vide Seção Modelagem).
 
-# Resultados
-
-
-Método | Acurácia
------ | -----
-Ada Boost | 80.8
-Extra Trees | 81.1
-Random Forest | 82.3 
-Gradient Boosting | 85.4
-
-Tabela 1: Resultados obtidos a partir da validação cruzada (5-fold) dos modelos treinados.
-
-# Discussão
-
 # Conclusão
->Destacar as principais conclusões obtidas no desenvolvimento do projeto.
->
->Destacar os principais desafios enfrentados.
->
->Principais lições aprendidas.
 
+> Destacar as principais conclusões obtidas no desenvolvimento do projeto.
+> bits de maior importância encontrados através de método proposto correspondem a estruturas com atividade farmacofóricas conhecidas em literatura: quinazolina
+> incluir conclusão do André
+> <imagem da quinazolina>
+> isso sugere que esse método pode ser usado como processo inicial de busca de regiões farmacologicamente ativas em out    ras interações candidato-enzima
+> encontrados subgrupos dentro das moléculas inibidoras com características específicas e distintas entre si
+> Destacar os principais desafios enfrentados.
+> Principais lições aprendidas.
 
 # Trabalhos Futuros
+
+> analisar outros valores de raio e tamanho de fingerprint de Morgan => valeria a pena codificar subestruturas maiores?
+> analisar outros métodos de fingerprint e comparar performance e explicabilidade
+> analisar desempenho em conjuntos de dados com mais moléculas => avaliar efeito de desbalanço
+> investigar subestruturas em clusters encontrados a fim de entender significado farmacológico
 
 # Referências Bibliográficas
  [1] XIAO, Kelvin, et al.. Cancer Inhibitors (Version 2). kaggle, 14 Jan. 2020. Disponível em: https://www.kaggle.com/xiaotawkaggle/inhibitors. Acesso em: 03 Abr. 2021.
