@@ -164,34 +164,45 @@ inibidoras e em azul as não-inibidoras.
 
 # Análises Realizadas
 
-Geração usando RDKit e estudo de _fingerprints_: visualização de subestruturas e significados dos _bits_
-Separado dataset entre treino e teste, usando 20% para teste
-- Usados modelos de ensemble de árvore <lista>
-- otimização de parâmetros através de busca randomizada otimizando <lista_de_hiperparâmetros> buscando boa performance     com minimização de _overfitting_
-- validação cruzada em 5 folds
-- Performance avaliada por acurácia dado conjunto de dados relativamente balanceado
-- cálculo de Sensibilidade e Especificidade
-7 - Interpretação de modelo vencedor usando SHAP:
-- escolhidos arbitrariamente 10 bits mais importantes
-- buscado em literatura conhecimento sobre moléculas inibidoras para comparação com bits mais importantes
-- Utilização de HDSCAN para análises de clusters
-- objetivo de encontrar grupos de moléculas com particularidades, mesmo dentro de inibidoras
-- Utlização de UMAP para visualizar clusters em 2 dimensões
+Em nossa análise, nós exploramos as _Fingerprints de Morgan_, extraídas utilizando a biblioteca RDKit, de modo a podermos
+visualizar as subestruturas das moléculas e interpretar o significado dos bits. Além disso, para evitar um eventual enviesamento
+de nossa análise, nós separamos o conjunto de dados em 20% para teste, sendo utilizado apenas ao final de nossas análises,
+e os outros 80% para a exploração e treino de algoritmos. 
 
-## Modelagem
-
-Seguindo nossa metodologia, nessa etapa nós objetivamos treinar algoritmos de classificação de modo a posteriormente extrairmos,
-por meio da biblioteca SHAP, os bits (atributos) de maior relevância estudá-los em detalhe. Ou seja, esse passo da nossa metodologia
-funcionaria como uma etapa de "_Feature Selection_". Então, nós experimentamos algoritmos que não apenas resultassem em boa 
-acurácia na classifocação, mas também que possibilitassem a explicabilidade do método de decisão. Dessa forma, nós decidimos
-trabalhar com algoritmos baseados em árvores de decisão, em particular os algoritmos 
+Nós assumimos que se conseguíssemos encontrar um bom método de classificação, conseguiríamos também extrair os bits (_Features_)
+mais importantes, desde que o método utilizado fosse explicável. Ou seja, esse passo da nossa metodologia
+funcionaria como uma etapa de "_Feature Selection_". Assim, optamos pelos métodos de Ensemble de Árvores de Decisão,
+pois eles se apresentavam como o equilíbrio entre acurácia e explicabilidade. Em particular, escolhemos os algoritmos 
 [Random Forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html), 
 [Extra Trees](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html?highlight=extra%20trees#sklearn.ensemble.ExtraTreesClassifier), 
-[Ada Boost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html?highlight=ada%20boost#sklearn.ensemble.AdaBoostClassifier) e
- [Gradient Boosting](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html?highlight=gradient%20boosting#sklearn.ensemble.GradientBoostingClassifier), todos disponíveis na biblioteca do Scikit-Learn.
- Avaliamos a performance desses algoritmos, separamos nosso conjunto de dados como sendo 80% para treino e validação e 20% para 
- teste. Ademais, como nossa base tem um volume de dados restrito, utilizamos a abordagem de validação cruzada (5-fold), os resultados são apresentados
- na Tabela 1. Mais detalhes sobre a modelagem podem ser obtidos no notebook [Modelling](https://github.com/alvarocapelo/datasci4heatlh/blob/main/notebooks/Modelling.ipynb).
+[Ada Boost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html?highlight=ada%20boost#sklearn.ensemble.AdaBoostClassifier) e 
+[Gradient Boosting](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html?highlight=gradient%20boosting#sklearn.ensemble.GradientBoostingClassifier), todos disponíveis na biblioteca do Scikit-Learn. 
+ 
+Para se escolher os melhores hiperparâmetros desses modelos, nós conduzimos uma busca aleatório (_Random Search_) dentre 
+os principais parâmetros de cada algoritmo. Além disso, como nossa base tem um volume de dados restrito, 
+nós avaliamos todos os modelos através abordagem de validação cruzada  em 5 folds. 
+Escolhemos a acurácia como principal métrica  de avaliação, uma vez que o conjunto não apresentava um desbalanceio significativo.
+Os resultados dos melhores modelos de cada algoritmo são apresentados na Tabela 1. 
+Mais detalhes sobre a modelagem podem ser obtidos no notebook [Modelling](https://github.com/alvarocapelo/datasci4heatlh/blob/main/notebooks/Modelling.ipynb).
+ 
+Uma vez treinados os modelos, escolhemos aquele apresentava melhor performance, no caso o modelo de Gradient Boosting, conduzimos a etapa de interpretação, para isso
+foi utlizada a biblioteca SHAP.  A partir dessa interpretação, conseguimos selecionar os 10 bits mais importantes para a classificação.
+Em seguida, visualizamos as subestruturas codificadas por esses bits, como ilustrados na Figura 6, e verificamos que 
+algumas dessas subestruturas se assemelhavam com aquelas que já são conhecidas na Literatura de inibidores da proteína kinase ErbB1.
+
+Com o objetivo de encontrar subgrupos de moléculas inibidoras com características comuns, nós realizamos a clusterização
+das moléculas com base naqueles 10 atributos mais importantes mencionados anteriormente. Para a clusterização, foi utilizado 
+o algortimo HDSCAN [16]. Em seguida, reduzimos o número de dimensões de 10 para 2 de modo que pudéssemos visualizar o resultado 
+da clusterização como apresentado na Figura 5.
+
+Finalmente, a fim de consolidarmos o conhecimento adquirido com análise de cluster, nós criar um classificador _rule-based_
+que leva em conta apenas os padrões observados em alguns clusters. Executamos uma análise comparativa entre esse classificador
+e o modelo Gradient Boosting sobre o conjunto de teste. Nessa análise, além da acurácia, consideramos as métricas de sensibilidade 
+e especificidade, de modo a avaliarmos a performance dos classificadores dentre os inibidores e não-inibidores conjunta e separadamente. 
+Observamos que esse classificador baseado no conhecimento adquirido resultou em uma especificidade superior ao do modelo de aprendizado de máquina e acurácia e sensibilidade razoáveis. Desse modo,
+o algoritmo consegue classificar corretamente não-inibidores com grande probabilidade de acerto, porém ainda deixa a desejar 
+quanto à classificação de inibidores. Portanto, será necessário um estudo mais aprofundado sobre as subestruturas encontradas
+de modo a entendermos como elas se combinam para gerar a ação inibitória frente à proteína kinase ErbB1. 
 
 ## Ferramentas
  Para a execução desse projeto, utilizamos a linguagem Python devido à disponibilidade de bibliotecas em seu ecossistema. Em particular, usamos as bibliotecas Scikit-Learn[3], que disponibiliza diversos algoritmos para aprendizagem de máquina, RDKit[4] para a manipulação das informações das moléculas e SHAP(_SHapley Additive exPlantions_) [5], para interpretação dos modelos de aprendizado de máquina, além de outras bibliotecas amplamente utilizadas para a manipulação e visualização de dados (e.g., Matplotlib, Seaborn, Pandas, Numpy).
@@ -211,18 +222,35 @@ Construida em cima desse conceito, a biblioteca SHAP possui pequenas modificaç�
 
 # Resultados e Discussão
 
+Na Tabela 1 apresentamos os resultados dos modelos de classificação entre moléculas inibidoras e não-inibidoras. Podemos 
+observar que o modelo de _Gradient Boosting_ teve uma performance consideravelmente superior aos outros métodos. Portanto,
+acreditamos que o método de _Gradient Boosting_ conseguiu encontrar padrões mais complexos nas subestruturas moleculares
+que não foram encontrados por outros métodos. Assim, escolhemo esse modelo para estudarmos a explicação do método de decisão
+e extrairmos os atributos mais importantes.
+
 Método | Acurácia
 ----- | -----
 Ada Boost | 80.8
 Extra Trees | 81.1
 Random Forest | 82.3 
-Gradient Boosting | 85.4
+**Gradient Boosting** | **85.4**
 
 Tabela 1: Resultados obtidos a partir da validação cruzada (5-fold) dos modelos treinados.
 
-> colocar figura de SHAP importância de features
-> colocar figura do slide de bits mais importantes
-> textos André
+
+A Figura 5 apresenta o gráfico de "_Feature Importance_" com os 15 bits mais importantes, ordenados de forma decrescente com relação à importância. Esse gráfico nos permite observar
+quais os atributos mais relevantes para a classificação. Podemos notar que de longe os bits 1367 e 
+1226 são os mais importantes para a classificação. Além disso, vale destacar que os 2034 bits menos significativos para
+a classicação separadamente têm importância muito baixa na média, porém se combinados podem ter uma relevância considerável.
+Na Figura 6, nós plotamos as subestruturas codificadas pelos 10 bits mais significativos.
+
+![Explicabilidade da Classificação por meio da contribuição de cada atributo para o SHAP Value.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/asset/images/feature_importance.png)
+
+Figura 5: Explicabilidade da Classificação por meio da contribuição de cada atributo para o SHAP Value
+
+![Subestruturas codificadas pelos 10 bits mais importantes.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/asset/images/important_bits.png)
+
+Figura 6: Subestruturas codificadas pelos 10 bits mais importantes.
 
 ## Análise de Clusters
 
@@ -238,7 +266,7 @@ também realizamos a redução de 10 para 2 dimensões utilizando o algoritmo UM
 
 ![Visualização dos clusters obtidos.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/asset/images/clusters.png)
 
-Figura 5:  As imagens ilustram a distribuição das moléculas com base em uma representação de dimensão reduzida para 2 com o algoritmo UMAP.
+Figura 7:  As imagens ilustram a distribuição das moléculas com base em uma representação de dimensão reduzida para 2 com o algoritmo UMAP.
 À esquerda está a distribuição das moléculas sobre o espaço de atributos, ponto em laranja indicam inibidores e 
 pontos em azul indicam não-inibidores. À direta está a mesma representação, porém os pontos estão coloridos de acordo com
 o resultado da clusterização, onde o cluster de índice -1 indica outliers.
@@ -247,7 +275,7 @@ o resultado da clusterização, onde o cluster de índice -1 indica outliers.
 
 Tabela 2: Essa tabela mostra a taxa de incidência dos bits mais importantes dentro de cada cluster.
 
-A Figura 5 mostra à esquerda a distribuição das moléculas de acordo com a anotação original se elas são inibidoras ou não. 
+A Figura 7 mostra à esquerda a distribuição das moléculas de acordo com a anotação original se elas são inibidoras ou não. 
 Além disso, à direita temos o resultado da clusterização, foram encontrados doze clusters mais um grupo de outliers. 
 Destacamos os clusters 2, 3 e 5, pois eles representam grupos de moléculas nos quais há pelo menos 30 vezes mais inibidoras 
 do que não-inibidoras. Portanto, esses são bons grupos a serem estudados em maior nível de detalhamento. Analogamente, 
@@ -255,31 +283,87 @@ observamos que os clusters 7 e 11 representam com maioria de não-inibidores, po
 número de não inibidores.
 
 Assim, realizamos uma análise comparativa entre os clusters 2, 3, 5, 7 e 11, onde analisamos a taxa de incidência de cada 
-bit em cada clusters. A taxa de incidência é definida como sendo a média de vezes que um dado bit é ativado dentre os 
-inibidores dividida pela média de ativação dentre os não-inibidores. Os resultados são apresentados na Tabela 2. 
+bit em cada cluster. A taxa de incidência é definida como sendo a média de vezes que um dado bit é ativado dentre os 
+inibidores dividida pela média de ativação dentre os não-inibidores. Dessa forma, conseguimos analisar frequência relativa
+de ativação dos bits dos inibidores em comparação ao não-inibidores. Os resultados são apresentados na Tabela 2. 
 
-> imagem bits característicos dos clusters
-
-Podemos observar que o bit 1367 não é ativado nos clusters com mais não-inibidores, enquanto que ele tem uma incidência 
+Podemos observar que o bit 1367 não é ativado nos clusters com maioria de não-inibidores (clusters 7 e 11), enquanto que ele tem uma incidência 
 maior ou igual a 1 para os clusters com maioria de inibidores, indicando que esse bit têm importância significativa para 
-caracterização de inibidores. Além disso, podemos ver que apenas os bits 1452 e 650 são ativados dentre os clusters 
+caracterização de inibidores, confirmando o resultado do gráfico de _Feature Importance_ da Figura 5. 
+Além disso, podemos ver que apenas os bits 1452 e 650 são ativados dentre os clusters 
 majoritariamente não-inibidores (clusters 7 e 11), e a incidência é igual a 1, ao passo que eles ou não são ativados dentre 
 os inibidores ou também têm incidência 1. Portanto, esses bits não são suficientes para classificar os não-inibidores. 
-Analogamente, os bits 1928 e 650 não são suficientes para explicar os inibidores dos clusters 2, 3 e 5. Já os bits 329 e 
-1482 são relevantes para a classificação de inibidores dentro do cluster 2, mas não dentro dos clusters 3 e 5. O bit 1482 
+Analogamente, os bits 1928 e 650 não são suficientes para explicar os inibidores dos clusters 2, 3 e 5. 
+ O que representa um resultado razoável, uma vez que as estruturas codificadas pelos bits 1452, 650 e 1928 são bastante simples, como podem ser 
+observadas na Figura 6. Já os bits 329 e 1482 são relevantes para a classificação de inibidores dentro do cluster 2, mas não dentro dos clusters 3 e 5. O bit 1482 
 parece ser importante para classificar os não-inibidores do cluster 3 e os inibidores do cluster 2. Por fim, o bit 1077 é 
-relevante para a classificação de inibidores dentro do cluster 5.
+relevante para a classificação de inibidores dentro do cluster 5. Na Figura 8 resumimos os bits característicos de cada
+cluster. No notebook [Bit_Importances_Analysis](https://github.com/alvarocapelo/datasci4heatlh/blob/main/notebooks/Bit_Importances_Analysis.ipynb)
+há mais detalhes sobre essa análise.
 
+![Bits caracteristicos de cada cluster.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/asset/images/bit_cluster.png)
+
+Figura 8: Bits característicos de cada cluster.
 
 ## Descoberta e Validação do Conhecimento
 A partir da análise dos clusters, descobrimos que as moléculas inibidoras frequentemente apresentam o seguinte padrão: 
-ativam conjuntamente os bits 329, 1482 e 1367; ou ativam os bits 489 e 1367, mas não o 1482; ou ativam apenas o bit 1077. 
-Essa regra, apesar simples, pode ser bastante útil para um filtragem manual de moléculas candidatas a inibidoras.
+ativam conjuntamente os bits 329, 1482 e 1367 (cluster 2); ou ativam os bits 489 e 1367, mas não o 1482 (cluster 3); ou ativam apenas o bit 1077 (cluster 5). 
+Essa regra, apesar simples, pode ser bastante útil para um filtragem manual de moléculas candidatas com potencial ação inibitória.
 
 Para validar essa regra de classificação que descobrimos a partir da clusterização, criamos um método em python e o 
-executamos sobre o conjunto de teste. Esse método apresentou uma acurácia de 61,9%, sensibilidade e especificidade de 52,5% e 82,7%, 
-respectivamente. Portanto, acreditamos que esse método pode ser bastante aplicável na prática, porém para se ter resultados mais 
-precisos de classificação de fato serão necessários algoritmos de aprendizado de máquina, tais como os que apresentamos nesse trabalho (vide Seção Modelagem).
+executamos sobre o conjunto de teste. O resultado está apresentado na Tabela 3. 
+Podemos notar que esse método baseado no conhecimento adquirido, embora seja bastante simples, apresentou uma especificidade
+superior àquela do método Gradient Boosting. Portanto, acreditamos que esse método possa ser bastante aplicável na prática,
+principalmente para selecionar moléculas não-inibidoras da proteína kinase ErbB1. Por outro lado, se o objetivo for selecionar
+moléculas inibidoras dessa proteína kinase, é mais recomendado usar o modelo de aprendizado de máquina Gradient Boosting. Por fim,
+uma análise mais aprofundada será necessária para entendermos melhor o de que forma comportamento conjunto desses bits provoca
+a ação inibitória da maior parte das moléculas dos clusters 2, 3 e 5.    
+
+
+Método | Acurácia | Sensibilidade | Especificidade
+----- | -----
+Cluster Knowledge based |  61.9 | 52.5 | **82.7**
+**Gradient Boosting** |  **84.0** | **89.6** | 71.9
+
+Tabela 3: Resultados dos métodos de classificação Gradient Boosting e baseado no conhecimento adquirido (Cluster Knowledge based) com base no conjunto de teste.
+
+## Análise Comparativa com a Literatura
+
+Em estudos de Structure Activity Relationship (SAR) comumente empregado para descoberta de novos fármacos no campo da química medicinal, 
+encontramos que o núcleo de quinazolina substituído por uma anilina no carbono 4, corresponde a uma ação inibitória sobre as enzimas de 
+tirosina quinase, competindo com o ATP pela ligação do sítio ativo [18-20].
+
+A presença do núcleo de quinazolina substituído no carbono 4 por uma anilina formaria interações de hidrogênio com o 
+sítio ativo da enzima, enquanto que a região representada pela letra ‘Y’ na Figura 9 participará de interações hidrofóbicas, 
+e a região representada pela letra ‘X’ da mesma figura, constituiria interações polares com o solvente, permitindo maior 
+liberdade de modificações moleculares [21].
+
+![Representação gráfica da região farmacofórica de moléculas inibidoras de ErbB. Fonte: Dos autores.](https://github.com/alvarocapelo/datasci4heatlh/blob/main/asset/images/quinazolina.png)
+
+Figura 9: Representação gráfica da região farmacofórica de moléculas inibidoras de ErbB. Fonte: Dos autores [21].
+
+Em concordância com a literatura, verificamos que os três bits de maior importância (1367, 1226, e 1452, respectivamente), 
+de acordo com o gráfico da Figura 5, codificam subestruturas moleculares que fazem parte do grupo farmacofórico quinazolina, importante para a inibição das 
+enzima ErbB1. Em particular, o bit 1367 (Figura 6) é o responsável por codificar  a subestrutura que mais se aproxima da estrutura 
+da quinazolina (Figura 9). Ele também apresenta o maior valor médio de SHAP, inclusive bastante diferente dos demais bits. 
+Analogamente 5 dos 10 bits mais importantes parecem codificar subestruturas de diferentes tamanhos associadas a essa região farmacofórica.
+Sendo eles os bits 329, 489, 1226, 1367 e 1452.
+
+O bit 329 que caracteriza o cluster 2 representa a substituição em ‘Y’ no modelo da figura 17, caracterizando um grupo 
+substituinte de anilina, em que sua presença corrobora para uma interação hidrofóbica, já discutida anteriormente. De 
+maneira análoga para o cluster 5, vislumbramos que o bit 1077 também pertence ao mesmo de substituinte em ‘Y’, com as mesmas 
+características químicas e estruturais.
+
+Outros bits não mencionados aqui, e que correspondem com alguma importância para a distinção entre moléculas inibidoras e 
+não-inibidoras, tais como os bits 366, 650, 1482 e 1928 correspondem a substituições realizadas em ‘X’ e ‘Y’ que podem 
+estar presentes em algumas moléculas inibidoras, refletindo de maneira já exemplificada, a correlação com sua atividade 
+de interação com a enzima.
+
+Vale destacar os exemplos de moléculas, anotadas como não-inibidoras no dataset, pertencentes aos clusters 2, 3 e 5 que 
+apresentam estrutura semelhante a moléculas estudadas por Li S. et. al. [22] e conhecidas em literatura por possuírem 
+atividade inibitória frente à ErbB. Em particular, possuem núcleos modificados de pirimidina e quinazolina. Portanto, 
+essas moléculas estão anotadas de maneira incorreta de acordo com a Literatura. Assim, essa dissonância deve ser melhor 
+avaliada em estudos futuros.
 
 # Conclusão
 
@@ -333,3 +417,13 @@ precisos de classificação de fato serão necessários algoritmos de aprendizad
 [16] HDBSCAN. The hdbscan Clustering Library. Disponível em:  https://hdbscan.readthedocs.io/en/latest/index.html. Acesso em 23 jun. 2021.
 
 [17] UMAP. Uniform Manifold Approximation and Projection for Dimension Reduction. Disponível em:  https://umap-learn.readthedocs.io/en/latest/. Acesso em 23 jun. 2021.
+
+[18]	Zhao F, Lin Z, Wang F, Zhao W, Dong X. Four-membered heterocycles-containing 4-anilino-quinazoline derivatives as epidermal growth factor receptor (EGFR) kinase inhibitors. Bioorg Med Chem Lett. 2013 Oct 1;23(19):5385-8. doi: 10.1016/j.bmcl.2013.07.049. Epub 2013 Jul 31. PMID: 23973168. 
+
+[19]	Barker AJ, Gibson KH, Grundy W, Godfrey AA, Barlow JJ, Healy MP, Woodburn JR, Ashton SE, Curry BJ, Scarlett L, Henthorn L, Richards L. Studies leading to the identification of ZD1839 (IRESSA): an orally active, selective epidermal growth factor receptor tyrosine kinase inhibitor targeted to the treatment of cancer. Bioorg Med Chem Lett. 2001 Jul 23;11(14):1911-4. doi: 10.1016/s0960-894x(01)00344-4. PMID: 11459659.
+
+[20]	Zhang YM, Cockerill S, Guntrip SB, et al. Synthesis and SAR of potent EGFR/erbB2 dual inhibitors. Bioorganic & Medicinal Chemistry Letters. 2004 Jan;14(1):111-114. DOI: 10.1016/j.bmcl.2003.10.010.
+
+[21]	Yun CH, Boggon TJ, Li Y, Woo MS, Greulich H, Meyerson M, Eck MJ. Structures of lung cancer-derived EGFR mutants and inhibitor complexes: mechanism of activation and insights into differential inhibitor sensitivity. Cancer Cell. 2007 Mar;11(3):217-27. doi: 10.1016/j.ccr.2006.12.017. PMID: 17349580; PMCID: PMC1939942.
+
+[22]	Li S, Guo C, Zhao H, Tang Y, Lan M. Synthesis and biological evaluation of 4-[3-chloro-4-(3-fluorobenzyloxy)anilino]-6-(3-substituted-phenoxy)pyrimidines as dual EGFR/ErbB-2 kinase inhibitors. Bioorganic & Medicinal Chemistry. 2012 Jan;20(2):877-885. DOI: 10.1016/j.bmc.2011.11.056.
