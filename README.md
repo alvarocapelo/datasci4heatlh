@@ -147,7 +147,7 @@ Figura 1: Histograma com o número de vezes que cada bit é ativado.
 Figura 2: Histograma com a ativação média de cada bit.
 
 A fim de entendermos melhor o funcionamento das Fingerprints e aprofundarmos nossa análise, nós selecionamos diferentes
- moléculas geramos suas Fingerprints e plotamos as subestruturas codificadas por diferentes bits. Nós observamos que os
+ moléculas, geramos suas Fingerprints e plotamos as subestruturas codificadas por diferentes bits. Nós observamos que 
  de fato bits na mesma posição (índice) em moléculas diferentes codificavam a mesma estrutura. No notebook [Investigating_RDKit_Morgan_FPs](https://github.com/alvarocapelo/datasci4heatlh/blob/main/notebooks/Investigating_RDKit_Morgan_FPs.ipynb)
  há uma descrição mais aprofundada desse estudo.   
 
@@ -155,7 +155,7 @@ A fim de entendermos melhor o funcionamento das Fingerprints e aprofundarmos nos
 Além disso, para termos uma ideia da distribuição das moléculas sobre o espaço de atributos, nós utilizamos o algoritmo
 UMAP [17] para reduzir o número de dimensões de 2048 para 2. A Figura 4 mostra essa representação em 2D. Podemos observar que 
 há determinados agrupamentos que parecem ser formados majoritariamente por moléculas inibidoras, outros por não-inibidoras, e 
-ainda outras regiões onde inibidoras e não-inibidoras estão mais misturadas. Com isso, nós levantamos a seguinte hipótese,
+ainda outras regiões onde inibidoras e não-inibidoras estão mais misturadas. Com isso, nós levantamos a seguinte hipótese:
 é possível que haja diferentes combinações de subestruturas moleculares que provoquem a ação inibitória de uma proteína?
 Para responder essa pergunta, nós realizamos a análise de clusters dessas moléculas, como descrito na Seção "Análise de Clusters".   
 
@@ -188,18 +188,17 @@ Escolhemos a acurácia como principal métrica  de avaliação, uma vez que o co
 Os resultados dos melhores modelos de cada algoritmo são apresentados na Tabela 1. 
 Mais detalhes sobre a modelagem podem ser obtidos no notebook [Modelling](https://github.com/alvarocapelo/datasci4heatlh/blob/main/notebooks/Modelling.ipynb).
  
-Uma vez treinados os modelos, escolhemos aquele apresentava melhor performance, no caso o modelo de Gradient Boosting, conduzimos a etapa de interpretação, para isso
-foi utilizada a biblioteca SHAP.  A partir dessa interpretação, conseguimos selecionar os 10 bits mais importantes para a classificação.
+Uma vez treinados os modelos, escolhemos aquele que apresentou melhor performance, no caso o modelo de Gradient Boosting, e conduzimos a etapa de interpretação com a biblioteca SHAP.  A partir dessa interpretação, conseguimos selecionar os bits mais importantes para a classificação.
 Em seguida, visualizamos as subestruturas codificadas por esses bits, como ilustrados na Figura 6, e verificamos que 
 algumas dessas subestruturas se assemelhavam com aquelas que já são conhecidas na Literatura de inibidores da proteína kinase ErbB1.
 
 Com o objetivo de encontrar subgrupos de moléculas inibidoras com características comuns, nós realizamos a clusterização
-das moléculas com base naqueles 10 atributos mais importantes mencionados anteriormente. Para a clusterização, foi utilizado 
+das moléculas com base nos 10 bits mais importantes. Para a clusterização, foi utilizado 
 o algoritmo HDBSCAN [16]. Em seguida, reduzimos o número de dimensões de 10 para 2 de modo que pudéssemos visualizar o resultado 
 da clusterização como apresentado na Figura 5.
 
-Finalmente, a fim de consolidarmos o conhecimento adquirido com análise de cluster, nós criar um classificador _rule-based_
-que leva em conta apenas os padrões observados em alguns clusters. Executamos uma análise comparativa entre esse classificador
+Finalmente, a fim de consolidarmos o conhecimento adquirido com análise de cluster, nós criamos um classificador baseado em regras manuais, 
+levando em conta apenas os padrões observados em alguns clusters. Executamos uma análise comparativa entre esse classificador
 e o modelo Gradient Boosting sobre o conjunto de teste. Nessa análise, além da acurácia, consideramos as métricas de sensibilidade 
 e especificidade, de modo a avaliarmos a performance dos classificadores dentre os inibidores e não-inibidores conjunta e separadamente. 
 Observamos que esse classificador baseado no conhecimento adquirido resultou em uma especificidade superior ao do modelo de aprendizado de máquina e acurácia e sensibilidade razoáveis. Desse modo,
