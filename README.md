@@ -28,13 +28,13 @@ Adicionalmente, foram observados subgrupos dentre as moléculas inibidoras carac
 
 [Vídeo da Proposta](https://github.com/alvarocapelo/datasci4heatlh/blob/main/asset/datasci4health_proposta_projeto.mp4)
 
-[Vídeo da Apresentação Final]()
+[Vídeo da Apresentação Final](https://github.com/alvarocapelo/datasci4heatlh/blob/main/asset/video_apresentacao_final.mp4)
 
 # Slides do Projeto
 
-[Slides da Proposta]()
+[Slides da Proposta](https://docs.google.com/presentation/d/1N6wFlCN-toHb3z1b7rcldrbp07E3uzAcUefWiG3h62g/edit?usp=sharing)
 
-[Slides da Apresentação Final]()
+[Slides da Apresentação Final](https://docs.google.com/presentation/d/115lWvttFJTZqaI5-IkI9Lc72tVtaRpjjB92PujVOdoo/edit?usp=sharing)
 
 
 
