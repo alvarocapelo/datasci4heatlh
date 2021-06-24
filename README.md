@@ -49,17 +49,11 @@ Adicionalmente, foram observados subgrupos dentre as moléculas inibidoras carac
 
  Portanto, é de extrema relevância a busca por novas moléculas inibidoras, de forma a viabilizar um tratamento efetivo, seguro e compatível com a vida de todos aqueles que padecem desta grande enfermidade chamada câncer. Tendo esse cenário em vista, exploraramos por meio de ferramentas de ciência de dados, potenciais moléculas inibidoras de ErbB1/HER1.
 
-```
-- adicionar parágrafo sobre Machine Learning aplicado a descoberta de drogas. referenciar papers: André
-- Machine Learning Methods in Drug Discovery, Patel, L. et al. doi:10.3390
-- Cano, G.; Garcia-Rodriguez, J.; Garcia-Garcia, A.; Perez-Sanchez, H.; Benediktsson, J.; Thapa, A.; Barr, A. Automatic     selection of molecular descriptors using random forest: Application to drug discovery. Expert Syst. Appl. 2017, 72, 151–15    9.
-```
+Nos últimos anos, técnicas de Machine Learning e Deep Learning vêm sendo impulsionadas devido à geração e incorporação de Big Data, devido ao advento de métodos automatizados para análises biológicas e químicas. Com a junção entre a precisão de métodos computacionais e bases de dados de alta qualidade, abordagens algorítmicas já são aplicadas em diferentes estágios do fluxo de descoberta de novos fármacos [18]. 
 
-> Indicação (bastante resumida) da análise proposta
->
-> Indicação (bastante resumida) dos resultados alcançados
+A partir disso, o projeto define a enzima EGFR/ErbB1 como alvo para inibição e propõe a análise de como a ação inibitória de uma molécula está relacionada com as subestruturas que a compõem. Resumidamente, foi necessária a geração de dados interpretáveis por algoritmos de aprendizado de máquina que foram imputados em algoritmos de classificação. Após a classificação, foram determinadas as subestruturas (features) mais relevantes para a classificação entre moléculas inibidoras e não-inibidoras. Por fim, houve a extração do conhecimento a partir da análise de clusters de moléculas formados com base nas features mais relevantes.
 
-
+Por fim, constatou-se que as técnicas computacionais utilizadas indicaram que as subestruturas mais presentes e relevantes em moléculas inibidoras correspondem à estruturas que, segundo a literatura, são capazes de indicar uma provável ação inibitória da molécula. Combinando este resultado com a performance dos classificadores treinados, há indícios de que essa abordagem apresenta potencial para o estudo de proteínas ainda não estudadas, sendo integrada à busca de estruturas moleculares que possam explicar uma ação inibitória.
 
 # Pergunta de Pesquisa
 Quais são os principais padrões moleculares associadas ao comportamento inibitório frente à enzima EGFR/ErbB1, relacionada ao câncer?
@@ -333,3 +327,5 @@ precisos de classificação de fato serão necessários algoritmos de aprendizad
 [16] HDBSCAN. The hdbscan Clustering Library. Disponível em:  https://hdbscan.readthedocs.io/en/latest/index.html. Acesso em 23 jun. 2021.
 
 [17] UMAP. Uniform Manifold Approximation and Projection for Dimension Reduction. Disponível em:  https://umap-learn.readthedocs.io/en/latest/. Acesso em 23 jun. 2021.
+
+[18] PATEL, Lauv et al. Machine Learning Methods in Drug Discovery. 2020. Disponível em: https://www.mdpi.com/1420-3049/25/22/5277. Acesso em: 23 jun. 2021.
