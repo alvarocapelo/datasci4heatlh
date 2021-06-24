@@ -405,19 +405,20 @@ Como é possível observar, as subestruturas codificadas nesse trabalho são rel
 > Analisar desempenho em conjuntos de dados com mais moléculas
 
 Nesse trabalho, as moléculas selecionadas para a geração de _fingerprints_ e formação dos conjuntos de treino e teste vieram diretamente de uma base de dados do Kaggle.
-Na documentação do conjunto de dados, não há clara menção de porque essas moléculas em particular foram selecionadas, mas é razoável supor que uma pré-seleção tenha sido realizada.
+Na documentação do conjunto de dados, não há clara menção do porquê essas moléculas em particular foram selecionadas, mas é razoável supor que uma pré-seleção tenha sido realizada.
 Observando que um valor muito maior de pequenas moléculas está disponível em bases como o ChEMBL, seria interessante investigar conjuntos de dados com ainda mais moléculas e com distribuições diferentes (e potencialmente extremamente desbalanceadas).
-Dessa maneira,  seria possível verificar a performance e a eficácia da aplicação de algoritmos de aprendizado de máquina para extração de conhecimento como aqui proposto.
+Dessa maneira, seria possível verificar se a performance e a eficácia aqui apresentadas seriam mantidas ou prejudicadas. No caso de serem prejudicadas, isso poderia evidenciar algum viés introduzido na base de dados do Kaggle, e a abordagem aqui sugerida teria que ser adaptada.
 
 > Investigar em maior profundidade subestruturas específicas aos _clusters_ encontrados
 
-Investigar mais _bits_ além dos 10 principais e buscar em literatura e com apoio de especialistas de domínio mais informações acerca de contribuição de subestruturas aqui apontadas. Adicionalmente, verificar se essas subestruturas fazem sentido do ponto de vista farmacológico ou não, de forma a ajudar a refinar o método de extração de conhecimento aqui proposto. Esse tipo de trabalho possui forte intersecção com primeiro ponto proposto nesta seção.
 
-> Avaliar outros métodos de _fingerprintiing_
+Pode-se investigar mais _bits_ além dos 10 principais e buscar em literatura, e com apoio de especialistas de domínio, mais informações acerca da contribuição das subestruturas aqui apontadas. Adicionalmente, verificar se essas subestruturas fazem sentido do ponto de vista farmacológico ou não, de forma a ajudar a refinar o método de extração de conhecimento aqui proposto. Esse tipo de trabalho possui forte intersecção com a proposta de investigação de outros valores para os paâmetros de raio e número de bits no vetor de _fingerprints_, proposto anteriormente.
+
+> Avaliar outros métodos de _fingerprinting_
 
 A fingerprint de Morgan (circular) foi escolhida como forma de representar as moléculas neste trabalho por ser simples e por permitir uma interpretação bastante intuitiva, e, ainda assim, ter potencial para boa performance na aplicação de aprendizado de máquina para classificação.
-No entanto, há muitas outros métodos de geração de _fingerprints_ para codificar características moleculares importantes.
-A título de exemplo, são alguns deles o de Fingerprints Farmacofóricos, o de Pares Atômicos e o de Fingerprints Torsionais. Valeria a pena estudar como esses métodos se comparam ao método de Morgan quanto ao _trade-off_ entre performance e explicabilidade.
+No entanto, há outros métodos de geração de _fingerprints_ para codificar características moleculares importantes.
+A título de exemplo, são alguns deles: Fingerprints Farmacofóricas, Pares Atômicos e Fingerprints Torsionais. Valeria a pena estudar como esses métodos se comparam ao método de Morgan quanto ao _trade-off_ entre performance e explicabilidade.
 
 # Referências Bibliográficas
  [1] XIAO, Kelvin, et al.. Cancer Inhibitors (Version 2). kaggle, 14 Jan. 2020. Disponível em: https://www.kaggle.com/xiaotawkaggle/inhibitors. Acesso em: 03 Abr. 2021.
