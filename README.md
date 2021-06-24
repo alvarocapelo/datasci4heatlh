@@ -115,6 +115,8 @@ Durante a geração da Fingerprint, a biblioteca RDKit permite o armazenamento d
  
 Esta informação foi armazenada para viabilizar a obtenção de informações interpretáveis sobre a moléculas além de permitir a visualização das sub-estruturas de forma isolada.
 
+A determinação do tamanho do vetor e quantidade de vizinhos foi baseada na literatura disponível que comumente emprega vetores de 2048 bits e raio (número de átomos vizinhos) igual a 2 [24]. Paralelamente, ensaios exploratórios com a geração de Fingerprints com 4096 bits, resultaram em vetores ainda mais esparsos que aqueles gerados com 2048 bits. Esta constatação indicou que este incremento não resultaria necessariamente na codificação de mais sub-estruturas e, portanto, vetores de 2048 bits seriam suficientes para a análise.
+
 Por fim, as bases de dados resultantes para a construção dos modelos continham os ChEMBL IDs, Fingerprints, dicionários bitInfo e labels de cada proteína do Dataset original.
 
 
@@ -467,3 +469,4 @@ A título de exemplo, são alguns deles: Fingerprints Farmacofóricas, Pares At�
 
 [23] PATEL, Lauv et al. Machine Learning Methods in Drug Discovery. 2020. Disponível em: https://www.mdpi.com/1420-3049/25/22/5277. Acesso em: 23 jun. 2021.
 
+[24] YOSHIMORI, Atsushi et al. Discovery of Novel eEF2K Inhibitors Using HTS Fingerprint Generated from Predicted Profiling of Compound-Protein Interactions. 2021. Disponível em: https://www.mdpi.com/2305-6320/8/5/23/htm. Acesso em: 24 jun. 2021.
