@@ -343,7 +343,7 @@ da quinazolina (Figura 9). Ele também apresenta o maior valor médio de SHAP, i
 Analogamente 5 dos 10 bits mais importantes parecem codificar subestruturas de diferentes tamanhos associadas a essa região farmacofórica.
 Sendo eles os bits 329, 489, 1226, 1367 e 1452.
 
-O bit 329 que caracteriza o cluster 2 representa a substituição em ‘Y’ no modelo da figura 17, caracterizando um grupo 
+O bit 329 que caracteriza o cluster 2 representa a substituição em ‘Y’ no modelo da Figura 9, caracterizando um grupo 
 substituinte de anilina, em que sua presença corrobora para uma interação hidrofóbica, já discutida anteriormente. De 
 maneira análoga para o cluster 5, vislumbramos que o bit 1077 também pertence ao mesmo de substituinte em ‘Y’, com as mesmas 
 características químicas e estruturais.
